@@ -6,7 +6,6 @@ public class Conta {
 	private int numeroConta;
 	
 	public Conta() {
-		
 	}
 	
 	public Conta(double saldo, String titular, int numeroConta) {
