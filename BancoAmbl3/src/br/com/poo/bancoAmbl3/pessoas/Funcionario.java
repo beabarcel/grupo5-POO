@@ -21,4 +21,12 @@ public class Funcionario extends Cliente{
 		return salario;
 	}
 	
+	public String getCargo() {
+		return cargo;
+	}
+	
+	public void setCargo() {
+		this.cargo = "Funcionario";
+	}
+	
 }
