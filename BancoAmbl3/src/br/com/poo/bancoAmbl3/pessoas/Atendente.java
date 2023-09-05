@@ -1,5 +1,5 @@
 package br.com.poo.bancoAmbl3.pessoas;
 
-public class Funcionario {
+public class Atendente {
 
 }
