@@ -1,5 +1,5 @@
 package br.com.poo.bancoAmbl3.contas;
 
-public class ContaCorrente {
+public class ContaCorrente extends Conta {
 
 }
