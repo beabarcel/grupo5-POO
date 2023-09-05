@@ -8,8 +8,8 @@ public class Gerente extends Funcionario{
 	public Gerente(String nome, String cpf, String email, String telefone) {
 		super(nome, cpf, email, telefone);
 	}
-
-	public double getBonificacao() {
-		return super.getBonificacao() + 1000;
-	}
+	
+	public double getSalario() {
+		return super.getSalario();
+	}	
 }

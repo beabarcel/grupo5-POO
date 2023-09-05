@@ -13,8 +13,8 @@ public class Conta {
 	private static Logger logger = Logger.getLogger(Conta.class.getName());
 	
 	public Conta() {
-		this.numeroConta = this.contador;
-		this.contador += 1;
+		this.numeroConta = Conta.contador;
+		Conta.contador += 1;
 	}
 	
 	
