@@ -1,7 +1,5 @@
 package br.com.poo.bancoAmbl3.contas;
 
-import java.util.logging.Level;
-
 public class ContaCorrente extends Conta {
 	private double limite;
 	
