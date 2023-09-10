@@ -12,8 +12,7 @@ public class SistemaInterno {
 		Presidente p = new Presidente("Daniel", "098777654321", "daniela@gmail.com", "24992234566");
 		try {
 			Presidente.criarPresidente(p);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException e) {			
 			e.printStackTrace();
 		}
 		
@@ -23,7 +22,10 @@ public class SistemaInterno {
 		
 		Conta c2 = new Conta();
 		c2.depositar(50.0);
-		c2.sacar(100.0);*/
+		c2.sacar(100.0);
+		
+		Gerente g = new Gerente();
+		logger.log(Level.INFO, g::toString);*/
 	}
 
 }
