@@ -1,6 +1,6 @@
 package br.com.poo.bancoAmbl3.contas.enums;
 
-public enum Conta {
+public enum StatusAnalise {
 
 	TRANSFERENCIA_CONCLUIDA,
 	TRANSFERENCIA_RECUSADA,

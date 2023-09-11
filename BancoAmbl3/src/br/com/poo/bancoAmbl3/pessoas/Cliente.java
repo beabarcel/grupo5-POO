@@ -5,8 +5,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Cliente {
-	private String nome;
 	private String cpf;
+	private String senha;
+	private String nome;
 	private String email;
 	private String telefone;
 	
