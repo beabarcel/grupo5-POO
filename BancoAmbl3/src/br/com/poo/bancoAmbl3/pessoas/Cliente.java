@@ -1,5 +1,9 @@
 package br.com.poo.bancoAmbl3.pessoas;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class Cliente {
 	private String nome;
 	private String cpf;
@@ -48,6 +52,16 @@ public class Cliente {
 		this.telefone = telefone;
 	}
 
+	public static void criarCliente(Cliente cliente) throws IOException {
+
+		FileWriter arq = new FileWriter("/Documentos/liliane_residencia/POO/workspace/grupo5-POO.Gerente.txt");
+
+		PrintWriter gravarArq = new PrintWriter(arq);
+
+		gravarArq.printf(cliente.toString());
+		gravarArq.close();
+	}
+	
 	@Override
 	public String toString() {
 		return "Cliente [nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", telefone=" + telefone + "]";
