@@ -15,6 +15,7 @@ public class JLogin extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField Login;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -43,6 +44,15 @@ public class JLogin extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
+		
+		textField = ,3new JTextField();
+		textField.setText("Login");
+		textField.setHorizontalAlignment(SwingConstants.CENTER);
+		textField.setForeground(Color.BLACK);
+		textField.setFont(new Font("Gayathri", Font.BOLD, 25));
+		textField.setColumns(10);
+		textField.setBackground(new Color(216, 216, 216));
+		contentPane.add(textField);
 		
 		Login = new JTextField();
 		Login.setBackground(new Color(216, 216, 216));

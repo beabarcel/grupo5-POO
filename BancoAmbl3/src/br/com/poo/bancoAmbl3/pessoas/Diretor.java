@@ -6,7 +6,7 @@ public class Diretor extends Funcionario{
 		super(nome, cpf, email, telefone);
 	}
 
-	public double getSalario() {
+		public double getSalario() {
 		return super.getSalario();
 	}
 }
