@@ -2,6 +2,7 @@ package br.com.poo.bancoAmbl3.contas;
 
 public class ContaCorrente extends Conta {
 	private double limite;
+	private double chequeEspecial;
 	
 	public ContaCorrente() {
 		super();

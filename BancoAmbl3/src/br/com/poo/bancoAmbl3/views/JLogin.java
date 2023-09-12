@@ -17,6 +17,16 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollBar;
+<<<<<<< HEAD
+import javax.swing.SwingConstants;
+import javax.swing.JToggleButton;
+import java.awt.event.KeyEvent;
+import javax.swing.border.LineBorder;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+=======
+import javax.swing.ImageIcon;
+>>>>>>> f9fd9b285dba182c0d34f6bf4f3ac841305bda29
 
 public class JLogin extends JFrame {
 
@@ -53,7 +63,7 @@ public class JLogin extends JFrame {
 		setBounds(100, 100, 530, 392);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(64, 128, 128));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -76,7 +86,7 @@ public class JLogin extends JFrame {
 		labelSenha.setBackground(new Color(0, 0, 0));
 		labelSenha.setForeground(new Color(0, 0, 0));
 		labelSenha.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelSenha.setBounds(123, 197, 45, 13);
+		labelSenha.setBounds(123, 179, 45, 13);
 		contentPane.add(labelSenha);
 		
 		JLabel txtAmbl3 = new JLabel("AMBL3");
@@ -85,6 +95,7 @@ public class JLogin extends JFrame {
 		contentPane.add(txtAmbl3);
 		
 		JButton botaoEntrar = new JButton("Entrar");
+		botaoEntrar.setBackground(new Color(64, 128, 128));
 		botaoEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String cpf = txtCpf.getText();
@@ -97,18 +108,47 @@ public class JLogin extends JFrame {
 			}
 		});
 		botaoEntrar.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		botaoEntrar.setBounds(216, 302, 85, 21);
+		botaoEntrar.setBounds(204, 253, 97, 26);
 		contentPane.add(botaoEntrar);
 		
 		txtCpf = new JTextField();
+		txtCpf.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		txtCpf.setColumns(10);
 		txtCpf.setBounds(123, 124, 253, 26);
 		contentPane.add(txtCpf);
 		
 		
 		txtSenha = new JPasswordField();
-		txtSenha.setBounds(123, 213, 253, 26);
+		txtSenha.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		txtSenha.setBounds(123, 197, 253, 26);
 		contentPane.add(txtSenha);
-	}
+		
+<<<<<<< HEAD
+		JButton botaoCadastro = new JButton("Novo por aqui? Cadastre-se.");
+		botaoCadastro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		        JCadastroCliente jCadastroLogin = new JCadastroCliente();
+				jCadastroLogin.setVisible(true);
+		    }
+		});
+		getContentPane().add(botaoCadastro);
+			
 	
+		botaoCadastro.setMnemonic(KeyEvent.VK_JAPANESE_KATAKANA);
+		botaoCadastro.setVerticalAlignment(SwingConstants.TOP);
+		botaoCadastro.setForeground(new Color(0, 0, 0));
+		botaoCadastro.setBackground(new Color(64, 128, 128));
+		botaoCadastro.setBounds(160, 307, 186, 21);
+		contentPane.add(botaoCadastro);
+=======
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon("./imagens/Screenshot_2023-09-11_at_16.31.57.png"));
+		lblNewLabel.setBounds(0, 216, 605, 350);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setBounds(69, 28, 70, 15);
+		contentPane.add(lblNewLabel_1);
+>>>>>>> f9fd9b285dba182c0d34f6bf4f3ac841305bda29
+	}
 }

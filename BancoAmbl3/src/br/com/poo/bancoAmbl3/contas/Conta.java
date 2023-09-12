@@ -1,14 +1,18 @@
 package br.com.poo.bancoAmbl3.contas;
 
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Conta {
 	private static int contador = 1;
 	
-	private double saldo;
+	private String cpfTitular;
 	private String titular;
+	private String agencia;
 	private int numeroConta;
+	private double saldo;
+	private Date dataTransferencia;
 	
 	private static Logger logger = Logger.getLogger(Conta.class.getName());
 	
@@ -37,6 +41,15 @@ public class Conta {
 		return numeroConta;
 	}
 	
+	public String getCpfTitular() {
+		return cpfTitular;
+	}
+	
+	
+	public String getAgencia() {
+		return agencia;
+	}
+	
 	public boolean depositar(double valor) {
 		if(valor <= 0 ) {
 			logger.log(Level.INFO,"Valor inválido para deposito. ");
@@ -45,6 +58,7 @@ public class Conta {
 			this.saldo += valor;
 			logger.log(Level.INFO,"Depósito realizado com sucesso! ");
 			logger.log(Level.INFO,"\nSaldo atualizado:{0}", getSaldo());
+			
 			return true;	
 			
 		}
@@ -66,4 +80,5 @@ public class Conta {
 	public String toString() {
 		return "Conta [saldo=" + saldo + ", titular=" + titular + ", numeroConta=" + numeroConta + "]";
 	}
+
 }
