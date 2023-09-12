@@ -11,7 +11,6 @@ public class SistemaInterno {
 
 	public static void main(String[] args) {
 		
-		
 		Conta c1 = new Conta(1000.0,"Marcos");
 		c1.depositar(50.0);
 		c1.sacar(100.0);

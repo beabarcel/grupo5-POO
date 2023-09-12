@@ -58,7 +58,6 @@ public class Conta {
 			this.saldo += valor;
 			logger.log(Level.INFO,"Depósito realizado com sucesso! ");
 			logger.log(Level.INFO,"\nSaldo atualizado:{0}", getSaldo());
-			
 			return true;	
 			
 		}
