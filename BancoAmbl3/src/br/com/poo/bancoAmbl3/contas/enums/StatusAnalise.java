@@ -6,5 +6,4 @@ public enum StatusAnalise {
 	TRANSFERENCIA_RECUSADA,
 	SAQUE_REALIZADO,
 	SALDO_INVALIDO,
-	
 }
