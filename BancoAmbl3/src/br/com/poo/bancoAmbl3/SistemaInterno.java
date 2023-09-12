@@ -3,15 +3,24 @@ package br.com.poo.bancoAmbl3;
 import java.io.IOException;
 
 import br.com.poo.bancoAmbl3.contas.Conta;
+import br.com.poo.bancoAmbl3.io.LeituraEscrita;
 import br.com.poo.bancoAmbl3.pessoas.Cliente;
 import br.com.poo.bancoAmbl3.pessoas.Gerente;
 import br.com.poo.bancoAmbl3.pessoas.Presidente;
 
 public class SistemaInterno {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
+		LeituraEscrita.leitor("banco");
+		LeituraEscrita.escritor("banco");
+		
+<<<<<<< HEAD
 		Conta c1 = new Conta(1000.0,"Marcos");
+=======
+		
+		/*Conta c1 = new Conta(1000.0,"Marcos");
+>>>>>>> 32e3c11e93bf9a51fb20fc61de54a45806c5791f
 		c1.depositar(50.0);
 		c1.sacar(100.0);
 		
@@ -37,7 +46,8 @@ public class SistemaInterno {
 		} catch (IOException e) {			
 			e.printStackTrace();
 		}
-		
+		*/
+	
 	}
 
 }

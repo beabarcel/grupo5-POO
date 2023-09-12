@@ -13,6 +13,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+import java.awt.SystemColor;
 
 public class JGerente extends JFrame {
 
@@ -79,7 +80,7 @@ public class JGerente extends JFrame {
 		entrar.add(passwordField_1);
 		
 		senhaG = new JPasswordField();
-		senhaG.setForeground(new Color(243, 243, 243));
+		senhaG.setForeground(new Color(0, 0, 0));
 		senhaG.setBounds(172, 235, 256, 34);
 		entrar.add(senhaG);
 		
