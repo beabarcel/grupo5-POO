@@ -17,16 +17,16 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollBar;
-<<<<<<< HEAD
+
 import javax.swing.SwingConstants;
 import javax.swing.JToggleButton;
 import java.awt.event.KeyEvent;
 import javax.swing.border.LineBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
-=======
+
 import javax.swing.ImageIcon;
->>>>>>> f9fd9b285dba182c0d34f6bf4f3ac841305bda29
+
 
 public class JLogin extends JFrame {
 
@@ -69,9 +69,9 @@ public class JLogin extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel txtLogin = new JLabel("Login");
-		txtLogin.setForeground(new Color(255, 255, 255));
-		txtLogin.setBounds(216, 28, 110, 37);
-		txtLogin.setFont(new Font("Tahoma", Font.BOLD, 25));
+		txtLogin.setForeground(new Color(0, 0, 0));
+		txtLogin.setBounds(228, 56, 55, 37);
+		txtLogin.setFont(new Font("Tahoma", Font.BOLD, 15));
 		contentPane.add(txtLogin);
 		
 		
@@ -95,7 +95,7 @@ public class JLogin extends JFrame {
 		contentPane.add(txtAmbl3);
 		
 		JButton botaoEntrar = new JButton("Entrar");
-		botaoEntrar.setBackground(new Color(64, 128, 128));
+		botaoEntrar.setBackground(new Color(255, 255, 255));
 		botaoEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String cpf = txtCpf.getText();
@@ -105,10 +105,51 @@ public class JLogin extends JFrame {
 				}else {
 					JOptionPane.showMessageDialog(botaoEntrar, "Erro! Preencha todos os campos.", "Aviso", JOptionPane.WARNING_MESSAGE);
 				}
+				botaoEntrar.addActionListener(new ActionListener() {
+				    public void actionPerformed(ActionEvent e) {
+				        String cpf = txtCpf.getText();
+				        String senha = new String(txtSenha.getPassword());
+				        String tipoUsuario = autenticarUsuario(cpf, senha);
+
+				        if (tipoUsuario != null) {
+				            switch (tipoUsuario) {
+				                
+				            	case "Cliente":
+				                    JCliente cliente = new JCliente();
+				                    cliente.setVisible(true);
+				                    break;
+				               
+				                case "Gerente":
+				                    JGerente gerente = new JGerente();
+				                    gerente.setVisible(true);
+				                    break;
+				                    
+				                case "Diretor":
+				                    JDiretor diretor = new JDiretor();
+				                    diretor.setVisible(true);
+				                    break;
+				                    
+				                case "Presidente":
+				                    JPresidente presidente = new JPresidente();
+				                    presidente.setVisible(true);
+				                    break;
+				            }
+				            dispose();
+				        } else {
+				            JOptionPane.showMessageDialog(botaoEntrar, "Credenciais inválidas. Tente novamente.");
+				        }
+				    }
+
+					private String autenticarUsuario(String cpf, String senha) {
+						// TODO Auto-generated method stub
+						return null;
+					}
+				});
+
 			}
 		});
 		botaoEntrar.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		botaoEntrar.setBounds(204, 253, 97, 26);
+		botaoEntrar.setBounds(206, 266, 94, 21);
 		contentPane.add(botaoEntrar);
 		
 		txtCpf = new JTextField();
@@ -123,32 +164,10 @@ public class JLogin extends JFrame {
 		txtSenha.setBounds(123, 197, 253, 26);
 		contentPane.add(txtSenha);
 		
-<<<<<<< HEAD
-		JButton botaoCadastro = new JButton("Novo por aqui? Cadastre-se.");
-		botaoCadastro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-		        JCadastroCliente jCadastroLogin = new JCadastroCliente();
-				jCadastroLogin.setVisible(true);
-		    }
-		});
-		getContentPane().add(botaoCadastro);
-			
-	
-		botaoCadastro.setMnemonic(KeyEvent.VK_JAPANESE_KATAKANA);
-		botaoCadastro.setVerticalAlignment(SwingConstants.TOP);
-		botaoCadastro.setForeground(new Color(0, 0, 0));
-		botaoCadastro.setBackground(new Color(64, 128, 128));
-		botaoCadastro.setBounds(160, 307, 186, 21);
-		contentPane.add(botaoCadastro);
-=======
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("./imagens/Screenshot_2023-09-11_at_16.31.57.png"));
-		lblNewLabel.setBounds(0, 216, 605, 350);
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setBounds(69, 28, 70, 15);
-		contentPane.add(lblNewLabel_1);
->>>>>>> f9fd9b285dba182c0d34f6bf4f3ac841305bda29
+		JLabel labelIntro = new JLabel("Olá, seja bem-vindo(a) à plataforma digital do AMBL3!");
+		labelIntro.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		labelIntro.setBounds(102, 24, 334, 21);
+		contentPane.add(labelIntro);
+
 	}
 }
