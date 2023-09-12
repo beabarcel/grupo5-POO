@@ -37,7 +37,7 @@ public class LeituraEscrita {
 		System.out.println("Escreva algo: ");
 		dados = sc.nextLine();
 		buffWriter.append(dados + "\n");
-		sc.close();
+		//sc.close();
 		buffWriter.close();
 	}
 	
