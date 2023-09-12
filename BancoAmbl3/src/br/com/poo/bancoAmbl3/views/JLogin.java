@@ -4,32 +4,22 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
-import java.awt.Window.Type;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JScrollBar;
 
-import javax.swing.SwingConstants;
-import javax.swing.JToggleButton;
-import java.awt.event.KeyEvent;
 import javax.swing.border.LineBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 
-import javax.swing.ImageIcon;
-<<<<<<< HEAD
 
-=======
->>>>>>> 1c331695694db603fca315aa40be3342d47acc09
 
 public class JLogin extends JFrame {
 
@@ -167,38 +157,10 @@ public class JLogin extends JFrame {
 		txtSenha.setBounds(123, 197, 253, 26);
 		contentPane.add(txtSenha);
 		
-<<<<<<< HEAD
 		JLabel labelIntro = new JLabel("Olá, seja bem-vindo(a) à plataforma digital do AMBL3!");
 		labelIntro.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		labelIntro.setBounds(102, 24, 334, 21);
 		contentPane.add(labelIntro);
 
-=======
-		JButton botaoCadastro = new JButton("Novo por aqui? Cadastre-se.");
-		botaoCadastro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-		        JCadastroCliente jCadastroLogin = new JCadastroCliente();
-				jCadastroLogin.setVisible(true);
-		    }
-		});
-		getContentPane().add(botaoCadastro);
-			
-	
-		botaoCadastro.setMnemonic(KeyEvent.VK_JAPANESE_KATAKANA);
-		botaoCadastro.setVerticalAlignment(SwingConstants.TOP);
-		botaoCadastro.setForeground(new Color(0, 0, 0));
-		botaoCadastro.setBackground(new Color(64, 128, 128));
-		botaoCadastro.setBounds(160, 307, 186, 21);
-		contentPane.add(botaoCadastro);
-
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("./imagens/Screenshot_2023-09-11_at_16.31.57.png"));
-		lblNewLabel.setBounds(0, 216, 605, 350);
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setBounds(69, 28, 70, 15);
-		contentPane.add(lblNewLabel_1);
->>>>>>> 1c331695694db603fca315aa40be3342d47acc09
 	}
 }

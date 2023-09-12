@@ -8,19 +8,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
-import javax.swing.JSlider;
-import javax.swing.JMenu;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JToolBar;
-import javax.swing.JRadioButton;
-import javax.swing.JList;
-import javax.swing.JScrollBar;
 import javax.swing.JComboBox;
 
 public class JPresidente extends JFrame {
