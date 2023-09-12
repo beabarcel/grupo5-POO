@@ -14,6 +14,7 @@ import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 public class JCadastroCliente extends JFrame {
 
@@ -47,7 +48,7 @@ public class JCadastroCliente extends JFrame {
 	public JCadastroCliente() {
 		setTitle("Cadastro - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 508, 474);
+		setBounds(100, 100, 444, 480);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(64, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -82,9 +83,10 @@ public class JCadastroCliente extends JFrame {
 		contentPane.add(txtNovoCpf);
 		txtNovoCpf.setColumns(10);
 		
-		JLabel txtAmbl3 = new JLabel("AMBL3");
+		JLabel txtAmbl3 = new JLabel("");
+		txtAmbl3.setIcon(new ImageIcon(JCadastroCliente.class.getResource("/br/com/poo/imagens/Logo.png")));
 		txtAmbl3.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		txtAmbl3.setBounds(449, 414, 45, 13);
+		txtAmbl3.setBounds(-83, 136, 501, 195);
 		contentPane.add(txtAmbl3);
 		
 		JButton botaoSalvarCadastro = new JButton("Cadastrar");

@@ -17,16 +17,15 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollBar;
-<<<<<<< HEAD
+
 import javax.swing.SwingConstants;
 import javax.swing.JToggleButton;
 import java.awt.event.KeyEvent;
 import javax.swing.border.LineBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
-=======
+
 import javax.swing.ImageIcon;
->>>>>>> f9fd9b285dba182c0d34f6bf4f3ac841305bda29
 
 public class JLogin extends JFrame {
 
@@ -123,7 +122,6 @@ public class JLogin extends JFrame {
 		txtSenha.setBounds(123, 197, 253, 26);
 		contentPane.add(txtSenha);
 		
-<<<<<<< HEAD
 		JButton botaoCadastro = new JButton("Novo por aqui? Cadastre-se.");
 		botaoCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -140,7 +138,7 @@ public class JLogin extends JFrame {
 		botaoCadastro.setBackground(new Color(64, 128, 128));
 		botaoCadastro.setBounds(160, 307, 186, 21);
 		contentPane.add(botaoCadastro);
-=======
+
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("./imagens/Screenshot_2023-09-11_at_16.31.57.png"));
 		lblNewLabel.setBounds(0, 216, 605, 350);
@@ -149,6 +147,5 @@ public class JLogin extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setBounds(69, 28, 70, 15);
 		contentPane.add(lblNewLabel_1);
->>>>>>> f9fd9b285dba182c0d34f6bf4f3ac841305bda29
 	}
 }

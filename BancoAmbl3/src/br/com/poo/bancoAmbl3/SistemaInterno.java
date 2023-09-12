@@ -15,9 +15,9 @@ public class SistemaInterno {
 		LeituraEscrita.leitor("banco");
 		LeituraEscrita.escritor("banco");
 		
-<<<<<<< HEAD
+
 		Conta c1 = new Conta(1000.0,"Marcos");
-=======
+
 		
 		/*Conta c1 = new Conta(1000.0,"Marcos");
 >>>>>>> 32e3c11e93bf9a51fb20fc61de54a45806c5791f
