@@ -79,18 +79,13 @@ public class JCliente extends JFrame {
 		txtNovoCpf.setBounds(102, 132, 248, 21);
 		txtNovoCpf.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		contentPane.add(txtNovoCpf);
+
+		txtNovoCpf.setColumns(10);
 		txtNovoCpf.setColumns(10);		
 
 		JLabel txtAmbl3 = new JLabel("AMBL3");
 		txtAmbl3.setBounds(449, 414, 45, 13);
 		txtAmbl3.setFont(new Font("Tahoma", Font.PLAIN, 10));
-
-//todo:verificar duplicidade de nome		
-//		JLabel txtAmbl3 = new JLabel("");
-//		txtAmbl3.setIcon(new ImageIcon(JCadastroCliente.class.getResource("/br/com/poo/imagens/Logo.png")));
-//		txtAmbl3.setFont(new Font("Tahoma", Font.PLAIN, 10));
-//		txtAmbl3.setBounds(-83, 136, 501, 195);
-//		contentPane.add(txtAmbl3);
 		
 		JButton botaoSalvarCadastro = new JButton("Cadastrar");
 		botaoSalvarCadastro.setBounds(184, 383, 94, 21);
