@@ -17,6 +17,9 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.border.LineBorder;
 import javax.swing.border.SoftBevelBorder;
+
+import br.com.poo.bancoAmbl3.LigacaoViews.Autenticacao;
+
 import javax.swing.border.BevelBorder;
 
 
@@ -93,53 +96,26 @@ public class JLogin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String cpf = txtCpf.getText();
 				String senha = new String(txtSenha.getPassword());
-				if(cpf != null && senha != null && !cpf.isEmpty() && !senha.isEmpty()) {
-					JOptionPane.showMessageDialog(botaoEntrar, "Bem vindo(a), " + cpf);	
-				}else {
-					JOptionPane.showMessageDialog(botaoEntrar, "Erro! Preencha todos os campos.", "Aviso", JOptionPane.WARNING_MESSAGE);
-				}
-				botaoEntrar.addActionListener(new ActionListener() {
-				    public void actionPerformed(ActionEvent e) {
-				        String cpf = txtCpf.getText();
-				        String senha = new String(txtSenha.getPassword());
-				        String tipoUsuario = autenticarUsuario(cpf, senha);
-
-				        if (tipoUsuario != null) {
-				            switch (tipoUsuario) {
-				                
-				            	case "Cliente":
-				                    JCliente cliente = new JCliente();
-				                    cliente.setVisible(true);
-				                    break;
-				               
-				                case "Gerente":
-				                    JGerente gerente = new JGerente();
-				                    gerente.setVisible(true);
-				                    break;
-				                    
-				                case "Diretor":
-				                    JDiretor diretor = new JDiretor();
-				                    diretor.setVisible(true);
-				                    break;
-				                    
-				                case "Presidente":
-				                    JPresidente presidente = new JPresidente();
-				                    presidente.setVisible(true);
-				                    break;
-				            }
-				            dispose();
-				        } else {
-				            JOptionPane.showMessageDialog(botaoEntrar, "Credenciais inválidas. Tente novamente.");
-				        }
-				    }
-
-					private String autenticarUsuario(String cpf, String senha) {
-						// TODO Auto-generated method stub
-						return null;
+				if(Autenticacao.autenticar(cpf, senha)){
+					if(cpf.equals("Cliente")) {
+						JCliente jCliente = new JCliente();
+						jCliente.setVisible(true);
+					}else if(cpf.equals("Gerente")) {
+						JGerente jGerente = new JGerente();
+						jGerente.setVisible(true);
+					}else if(cpf.equals("Diretor")) {
+						JDiretor jDiretor = new JDiretor();
+						jDiretor.setVisible(true);
+					}else if(cpf.equals("Presidente")) {
+						JPresidente jPresidente = new JPresidente();
+						jPresidente.setVisible(true);
+						
+					}else {
+						JOptionPane.showMessageDialog(null, "Erro! Credencias Inválidas.", "Aviso", JOptionPane.WARNING_MESSAGE);
 					}
-				});
-
-			}
+					dispose();					
+				}
+				}
 		});
 		botaoEntrar.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		botaoEntrar.setBounds(206, 266, 94, 21);
