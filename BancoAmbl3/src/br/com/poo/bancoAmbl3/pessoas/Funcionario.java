@@ -1,9 +1,8 @@
 package br.com.poo.bancoAmbl3.pessoas;
 
-public class Funcionario {
+public class Funcionario implements FolhaDePagamento {
 
 	private double salario = 0;
-	private double bonificacao = 0;
 	private String nome;
 	private String cpf;
 	private String email;
@@ -30,20 +29,13 @@ public class Funcionario {
 		this.senha = senha;
 	}
 
+	@Override
 	public double getSalario() {
 		return this.salario;
 	}
 
 	public void setSalario(double salario) {
 		this.salario = salario;
-	}
-
-	public double getBonificacao() {
-		return this.bonificacao;
-	}
-
-	public void setBonificacao(double bonificacao) {
-		this.bonificacao = bonificacao;
 	}
 
 	public String getNome() {
@@ -84,6 +76,16 @@ public class Funcionario {
 
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
+	}
+	
+	@Override
+	public double folhaDePagamento() {
+		return this.getSalario() + this.bonificacao();
+	}
+
+	@Override
+	public double bonificacao() {
+		return this.getSalario()*0.1;
 	}
 
 	@Override

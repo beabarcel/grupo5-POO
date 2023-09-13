@@ -1,6 +1,6 @@
 package br.com.poo.bancoAmbl3.pessoas;
 
-public class Gerente extends Funcionario {
+public class Gerente extends Funcionario implements FolhaDePagamento {
 
 	int agencia;
 
@@ -26,6 +26,21 @@ public class Gerente extends Funcionario {
 
 	public void setAgencia(int agencia) {
 		this.agencia = agencia;
+	}
+	
+	@Override
+	public double getSalario() {
+		return getSalario();
+	}
+
+	@Override
+	public double folhaDePagamento() {
+		return this.getSalario() + this.bonificacao();
+	}
+
+	@Override
+	public double bonificacao() {
+		return this.getSalario()*0.15;
 	}
 
 	@Override

@@ -1,6 +1,8 @@
 package br.com.poo.bancoAmbl3.pessoas;
 
-public class Diretor extends Funcionario {
+import java.util.Arrays;
+
+public class Diretor extends Funcionario implements FolhaDePagamento{
 
 	int[] agencias;
 
@@ -24,5 +26,29 @@ public class Diretor extends Funcionario {
 	public void setAgencias(int[] agencias) {
 		this.agencias = agencias;
 	}
+	
+	@Override
+	public double getSalario() {
+		return getSalario();
+	}
+
+	@Override
+	public double folhaDePagamento() {
+		return this.getSalario() + this.bonificacao();
+	}
+
+	@Override
+	public double bonificacao() {
+		return this.getSalario()*0.20;
+	}
+
+	@Override
+	public String toString() {
+		return "Diretor [agencias=" + Arrays.toString(agencias) + ", getNome()=" + getNome() 
+				+ ", getCpf()=" + getCpf() + ", getEmail()=" + getEmail()
+				+ ", getTelefone()=" + getTelefone() + ", getCargo()=" + getCargo() + "]";
+	}
+	
+	
 	
 }

@@ -26,9 +26,6 @@ public class JCliente extends JFrame {
 	private JTextField txtNovoTelefone;
 	private JTextField txtNovoEmail;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -48,11 +45,8 @@ public class JCliente extends JFrame {
 	public JCliente() {
 		setTitle("Cadastro - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-<<<<<<< HEAD:BancoAmbl3/src/br/com/poo/bancoAmbl3/views/JCliente.java
 		setBounds(100, 100, 518, 474);
-=======
 		setBounds(100, 100, 444, 480);
->>>>>>> 1c331695694db603fca315aa40be3342d47acc09:BancoAmbl3/src/br/com/poo/bancoAmbl3/views/JCadastroCliente.java
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(64, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -86,17 +80,11 @@ public class JCliente extends JFrame {
 		txtNovoCpf.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		contentPane.add(txtNovoCpf);
 		txtNovoCpf.setColumns(10);
-		
-<<<<<<< HEAD:BancoAmbl3/src/br/com/poo/bancoAmbl3/views/JCliente.java
-		JLabel txtAmbl3 = new JLabel("AMBL3");
-		txtAmbl3.setBounds(449, 414, 45, 13);
-		txtAmbl3.setFont(new Font("Tahoma", Font.PLAIN, 10));
-=======
+
 		JLabel txtAmbl3 = new JLabel("");
 		txtAmbl3.setIcon(new ImageIcon(JCadastroCliente.class.getResource("/br/com/poo/imagens/Logo.png")));
 		txtAmbl3.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		txtAmbl3.setBounds(-83, 136, 501, 195);
->>>>>>> 1c331695694db603fca315aa40be3342d47acc09:BancoAmbl3/src/br/com/poo/bancoAmbl3/views/JCadastroCliente.java
 		contentPane.add(txtAmbl3);
 		
 		JButton botaoSalvarCadastro = new JButton("Cadastrar");
