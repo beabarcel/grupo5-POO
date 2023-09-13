@@ -49,4 +49,8 @@ public class ContaCorrente extends Conta {
 			return false;
 		}
 	}
+	
+	public void relatorioTributacao() {
+		
+	}
 }

@@ -16,6 +16,7 @@ import javax.swing.JSlider;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.swing.ImageIcon;
 
 public class JContaCorrente extends JFrame {
 
@@ -55,6 +56,12 @@ public class JContaCorrente extends JFrame {
 		contentPane_1.setBackground(new Color(0, 128, 128));
 		contentPane_1.setBounds(0, 0, 428, 441);
 		contentPane.add(contentPane_1);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setBounds(347, 11, 71, 30);
+		contentPane_1.add(lblNewLabel_3);
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setIcon(new ImageIcon(JContaCorrente.class.getResource("/br/com/poo/imagens/Logo.png")));
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);

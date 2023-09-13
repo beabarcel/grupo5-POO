@@ -145,10 +145,5 @@ public class JContaPoupanca extends JFrame {
 		btnNewButton_1_1_2.setBackground(UIManager.getColor("Button.background"));
 		btnNewButton_1_1_2.setBounds(10, 312, 119, 23);
 		contentPane.add(btnNewButton_1_1_2);
-		
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(JContaPoupanca.class.getResource("src/br/com/poo/imagens/IconeTransferencia.png")));
-		lblNewLabel_3.setBounds(10, 348, 306, 70);
-		contentPane.add(lblNewLabel_3);
 	}
 }
