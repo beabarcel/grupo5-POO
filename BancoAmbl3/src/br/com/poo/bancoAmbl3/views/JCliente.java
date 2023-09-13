@@ -79,7 +79,13 @@ public class JCliente extends JFrame {
 		txtNovoCpf.setBounds(102, 132, 248, 21);
 		txtNovoCpf.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		contentPane.add(txtNovoCpf);
+
 		txtNovoCpf.setColumns(10);
+		txtNovoCpf.setColumns(10);		
+
+		JLabel txtAmbl3 = new JLabel("AMBL3");
+		txtAmbl3.setBounds(449, 414, 45, 13);
+		txtAmbl3.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		
 		JButton botaoSalvarCadastro = new JButton("Cadastrar");
 		botaoSalvarCadastro.setBounds(184, 383, 94, 21);
