@@ -1,80 +1,80 @@
 package br.com.poo.bancoAmbl3.contas;
 
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.util.Date;
 
 public class Conta {
 	private static int contador = 1;
-	
+
+	private String tipoConta;
 	private String cpfTitular;
 	private String titular;
 	private String agencia;
-	private int numeroConta;
 	private double saldo;
-	private Date dataTransferencia;
-	
-	private static Logger logger = Logger.getLogger(Conta.class.getName());
-	
+	private int numeroConta;
+	// private Date dataTransferencia;
+
 	public Conta() {
 		this.numeroConta = Conta.contador;
-		Conta.contador += 1;
+		Conta.contador++;
 	}
-	
-	
+
 	public Conta(double saldo, String titular) {
-		this.numeroConta = this.contador;
+		this.numeroConta = Conta.contador;
 		this.saldo = saldo;
 		this.titular = titular;
-		this.contador += 1;
+		Conta.contador++;
 	}
-	
+
 	public double getSaldo() {
 		return saldo;
 	}
-	
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
 	public String getTitular() {
 		return titular;
 	}
-	
+
 	public int getNumeroConta() {
 		return numeroConta;
 	}
-	
+
 	public String getCpfTitular() {
 		return cpfTitular;
 	}
-	
-	
+
 	public String getAgencia() {
 		return agencia;
 	}
-	
+
+	public String getTipoConta() {
+		return tipoConta;
+	}
+
+	public void setTipoConta(String tipoConta) {
+		this.tipoConta = tipoConta;
+	}
+
 	public boolean depositar(double valor) {
-		if(valor <= 0 ) {
-			logger.log(Level.INFO,"Valor inválido para deposito. ");
+		if (valor <= 0) {
 			return false;
-		} else { 
+		} else {
 			this.saldo += valor;
-			logger.log(Level.INFO,"Depósito realizado com sucesso! ");
-			logger.log(Level.INFO,"\nSaldo atualizado:{0}", getSaldo());
-			return true;	
-			
+			return true;
+
 		}
 	}
-	
+
 	public boolean sacar(double valor) {
-		if(valor > this.saldo || valor <= 0 ) {
-			logger.log(Level.INFO,"Valor indisponivel para saque. ");
+		if (valor > this.saldo || valor <= 0) {
 			return false;
-		} else { 
+		} else {
 			this.saldo -= valor;
-			logger.log(Level.INFO,"Saque realizado com sucesso! ");
-			logger.log(Level.INFO,"\nSaldo atualizado:{0}", getSaldo());
-			return true;		
+			return true;
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Conta [saldo=" + saldo + ", titular=" + titular + ", numeroConta=" + numeroConta + "]";

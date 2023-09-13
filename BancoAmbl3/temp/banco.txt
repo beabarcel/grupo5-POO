@@ -1,1 +1,10 @@
-Bia; 22451892; 123456
+CLIENTE,1,Marcos Pavao,12356478941,marcospavao@gmail.com,24987854658;
+CLIENTE,2,Beatriz Barcelos,321456987452,biabarcelos@gmail.com,24658975412;
+CLIENTE,3,Liliane David,52489657451,lilidavid@hotmail.com,24569874512;
+CLIENTE,4,Lucas Latsch,00145256987,lucaslatsch@yahoo.com,24658974581;
+CLIENTE,5,Lucas Caiafa,25413658794,lucascaiafa@gmail.com,24565874569;
+GERENTE,15,Daniela Cruz,32954785123,cruzdaniela@bancoambl3@gmail.com,35012459879;
+GERENTE,17,Alexander Mello,10145658745,melloalexander@bancoambl3@gmail.com,2499875462;
+DIRETOR,16,Jorge Belmor,24958745254,belmorjorge@bancoambl3@gmail.com,219874565478;
+DIRETOR,18,Cecilia Amaranto,00254136547,amarantocecilia@bancoambl3@gmail.com,21988745632;
+PRESIDENTE,17,Juliana Amoedo,15548796321,amoedojuliana@bancoambl3@gmail.com,21548975689;

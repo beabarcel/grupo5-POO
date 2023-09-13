@@ -1,12 +1,28 @@
 package br.com.poo.bancoAmbl3.pessoas;
 
-public class Diretor extends Funcionario{
+public class Diretor extends Funcionario {
 
-	public Diretor(String nome, String cpf, String email, String telefone) {
-		super(nome, cpf, email, telefone);
+	int[] agencias;
+
+	public Diretor(String nome, String cpf, String email, String telefone, String senha) {
+		super(nome, cpf, email, telefone, senha);
+
 	}
 
-		public double getSalario() {
-		return super.getSalario();
+	public Diretor() {
+		super();
 	}
+	
+	public void relatorio() {
+		
+	}
+
+	public int[] getAgencias() {
+		return agencias;
+	}
+
+	public void setAgencias(int[] agencias) {
+		this.agencias = agencias;
+	}
+	
 }

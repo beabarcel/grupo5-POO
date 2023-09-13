@@ -1,4 +1,4 @@
-package br.com.poo.bancoAmbl3.contas.enums;
+package br.com.poo.bancoAmbl3.enums;
 
 public enum StatusAnalise {
 

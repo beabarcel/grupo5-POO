@@ -1,13 +1,14 @@
 package br.com.poo.bancoAmbl3.contas;
 
-public class ContaPoupanca extends Conta{
+public class ContaPoupanca extends Conta {
+
 	private double rendimento;
-	private final double taxa = 0.15;
-	
+	private double taxa = 0.15;
+
 	public ContaPoupanca() {
 		super();
 	}
-	
+
 	public ContaPoupanca(double saldo, String titular) {
 		super(saldo, titular);
 	}
@@ -23,8 +24,15 @@ public class ContaPoupanca extends Conta{
 	public double getTaxa() {
 		return taxa;
 	}
-	
-	
-	
-	
+
+	public void setTaxa(double taxa) {
+		this.taxa = taxa;
+	}
+
+	public double totalRendimento() {
+		this.rendimento = this.getSaldo() * taxa;
+		setSaldo(this.getSaldo() + this.getSaldo() * taxa);
+		return rendimento;
+	}
+
 }
