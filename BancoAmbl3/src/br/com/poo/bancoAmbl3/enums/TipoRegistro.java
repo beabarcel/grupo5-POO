@@ -8,5 +8,4 @@ public enum TipoRegistro {
 	PRESIDENTE,
 	CONTACORRENTE,
 	CONTAPOUPANCA,
-	
 }

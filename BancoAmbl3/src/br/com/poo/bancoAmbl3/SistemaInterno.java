@@ -15,21 +15,21 @@ import br.com.poo.bancoAmbl3.views.JLogin;
 public class SistemaInterno {
 
 	public static void main(String[] args) throws IOException {
-		
-//		JLogin jl = new JLogin();
-//		jl.setLocationRelativeTo(jl);
-//		jl.setVisible(true);
-		
-	  Map<String, Cliente> clientes = new Cliente().buscarClientes();
-	  Map<String, Gerente> gerentes = new Gerente().buscarGerente();
-	  Map<String, Diretor> diretor = new Diretor().buscarDiretor();
-	  Map<String, Presidente> presidente = new Presidente().buscarPresidente();
-	  Map<String, ContaCorrente> CC = new ContaCorrente().buscarCC();
-	  
+
+		JLogin jl = new JLogin();
+		jl.setLocationRelativeTo(jl);
+		jl.setVisible(true);
+
+		Map<String, Cliente> clientes = new Cliente().buscarClientes();
+		Map<String, Gerente> gerentes = new Gerente().buscarGerente();
+		Map<String, Diretor> diretor = new Diretor().buscarDiretor();
+		Map<String, Presidente> presidente = new Presidente().buscarPresidente();
+		Map<String, ContaCorrente> CC = new ContaCorrente().buscarCC();
+
 //	  System.out.println(clientes + "\n");
 //	  System.out.println(gerentes + "\n");
 //	  System.out.println(diretor +"\n");
-	  System.out.println(CC);
-	  
+		System.out.println(CC);
+
 	}
 }

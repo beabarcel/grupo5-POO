@@ -1,48 +1,24 @@
 package br.com.poo.bancoAmbl3.views;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JSeparator;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JSlider;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 
 public class JContaCorrente extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JContaCorrente frame = new JContaCorrente();
-					frame.setLocationRelativeTo(frame);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public JContaCorrente() {
+	public JContaCorrente(boolean corrente, boolean poupanca) {
 		setTitle("Conta Corrente - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 480);
@@ -159,5 +135,17 @@ public class JContaCorrente extends JFrame {
 		lblTransfernciaRvinte.setFont(new Font("Dialog", Font.ITALIC, 12));
 		lblTransfernciaRvinte.setBounds(10, 384, 217, 14);
 		contentPane_1.add(lblTransfernciaRvinte);
+		
+		JButton botaoVoltar = new JButton("Voltar");
+		botaoVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				JCliente jCliente = new JCliente(corrente, poupanca);
+				jCliente.setLocationRelativeTo(jCliente);
+				jCliente.setVisible(true);
+			}
+		});
+		botaoVoltar.setBounds(314, 397, 85, 21);
+		contentPane_1.add(botaoVoltar);
 	}
 }

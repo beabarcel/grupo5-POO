@@ -19,8 +19,10 @@ public class ContaCorrente extends Conta {
 	public ContaCorrente(double saldo, String titular) {
 		super(saldo, titular);
 	}
-	public ContaCorrente(String tipoConta, String cpfTitular, String titular, String agencia, double saldo, int numeroConta) {
-		super(tipoConta, cpfTitular,titular,agencia,saldo,numeroConta);
+
+	public ContaCorrente(String tipoConta, String cpfTitular, String titular, String agencia, double saldo,
+			int numeroConta) {
+		super(tipoConta, cpfTitular, titular, agencia, saldo, numeroConta);
 	}
 
 	public boolean getStatus() {
@@ -38,7 +40,6 @@ public class ContaCorrente extends Conta {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
 
 	@Override
 	public boolean depositar(double valor) {
@@ -50,7 +51,7 @@ public class ContaCorrente extends Conta {
 
 		}
 	}
-	
+
 	@Override
 	public boolean sacar(double valor) {
 		if (valor > getSaldo() || valor <= 0) {
@@ -82,34 +83,31 @@ public class ContaCorrente extends Conta {
 			return false;
 		}
 	}
-	
+
 	public void relatorioTributacao() {
-		
-	}
-	
-	
-		@Override
-	public String toString() {
-		return "\nContaCorrente " + ",Tipo da Conta = " + getTipoConta() + "CPF do Titular= " + getCpfTitular() + "Titular= " + getTitular() + 
-				", Agencia()=" + getAgencia() + ", Saldo= " + getSaldo() + ", getAgencia()=" + getAgencia() + ", getTipoConta()=" + getTipoConta()+ "Numero da Conta"+ getNumeroConta()+  "]";
+
 	}
 
-		public Map<String, ContaCorrente> buscarCC() throws IOException {
+	@Override
+	public String toString() {
+		return "\nContaCorrente " + ",Tipo da Conta = " + getTipoConta() + "CPF do Titular= " + getCpfTitular()
+				+ "Titular= " + getTitular() + ", Agencia()=" + getAgencia() + ", Saldo= " + getSaldo()
+				+ ", getAgencia()=" + getAgencia() + ", getTipoConta()=" + getTipoConta() + "Numero da Conta"
+				+ getNumeroConta() + "]";
+	}
+
+	public static Map<String, ContaCorrente> buscarCC() throws IOException {
 		Map<String, String> registros = LeituraEscrita.leitor(TipoRegistro.CONTACORRENTE);
 		Map<String, ContaCorrente> CC = new HashMap<>();
 		for (String registro : registros.keySet()) {
 			String linha = registros.get(registro);
-			CC.put(linha.split(",")[2], 
-					new ContaCorrente(linha.split(",")[1],
-					linha.split(",")[2],
-					linha.split(",")[3],
-					linha.split(",")[4],
-					Double.parseDouble(linha.split(",")[5]),
-					Integer.parseInt(linha.split(",")[6])));
+			CC.put(linha.split(",")[2],
+					new ContaCorrente(linha.split(",")[1], linha.split(",")[2], linha.split(",")[3],
+							linha.split(",")[4], Double.parseDouble(linha.split(",")[5]),
+							Integer.parseInt(linha.split(",")[6])));
 		}
-		
+
 		return CC;
-		
+
 	}
 }
-

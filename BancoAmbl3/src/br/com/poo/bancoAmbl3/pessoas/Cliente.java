@@ -13,7 +13,6 @@ public class Cliente {
 	private String nome;
 	private String email;
 	private String telefone;
-
 	public Cliente() {
 	}
 
@@ -65,7 +64,7 @@ public class Cliente {
 		this.senha = senha;
 	}
 
-	public Map<String, Cliente> buscarClientes() throws IOException {
+	public static Map<String, Cliente> buscarClientes() throws IOException {
 		Map<String, String> registros = LeituraEscrita.leitor(TipoRegistro.CLIENTE);
 		Map<String, Cliente> clientes = new HashMap<>();
 		for (String registro : registros.keySet()) {

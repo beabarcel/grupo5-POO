@@ -26,7 +26,6 @@ public class JCadastro extends JFrame {
 	private JPasswordField txtNovaSenha;
 	private JTextField txtNovoCpf;
 	private JTextField txtNovoNome;
-	private JPasswordField txtConfSenha;
 	private JTextField txtNovoTelefone;
 	private JTextField txtNovoEmail;
 
@@ -34,7 +33,7 @@ public class JCadastro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JCliente frame = new JCliente();
+					JCadastro frame = new JCadastro();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +57,7 @@ public class JCadastro extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel labelCadastro = new JLabel("Cadastro Geral");
+		JLabel labelCadastro = new JLabel("Cadastro Cliente");
 		labelCadastro.setBounds(162, 0, 154, 45);
 		labelCadastro.setForeground(new Color(0, 0, 0));
 		labelCadastro.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -92,7 +91,7 @@ public class JCadastro extends JFrame {
 		txtAmbl3.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		
 		JButton botaoSalvarCadastro = new JButton("Cadastrar");
-		botaoSalvarCadastro.setBounds(184, 383, 94, 21);
+		botaoSalvarCadastro.setBounds(182, 350, 94, 21);
 		botaoSalvarCadastro.setBackground(new Color(255, 255, 255));
 		contentPane.add(botaoSalvarCadastro);
 		
@@ -101,16 +100,6 @@ public class JCadastro extends JFrame {
 		txtNovoNome.setColumns(10);
 		txtNovoNome.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		contentPane.add(txtNovoNome);
-		
-		txtConfSenha = new JPasswordField();
-		txtConfSenha.setBounds(102, 342, 248, 21);
-		txtConfSenha.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		contentPane.add(txtConfSenha);
-		
-		JLabel labelConfSenha = new JLabel("Confirme sua senha *");
-		labelConfSenha.setBounds(102, 316, 132, 16);
-		labelConfSenha.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(labelConfSenha);
 		
 		JLabel labelNovoNome = new JLabel("Nome *");
 		labelNovoNome.setBounds(102, 55, 45, 13);

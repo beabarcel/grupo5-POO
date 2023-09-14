@@ -1,16 +1,22 @@
 package br.com.poo.bancoAmbl3.views;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
+import java.awt.EventQueue;
 import java.awt.Font;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.swing.JButton;
-import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import br.com.poo.bancoAmbl3.enums.Funcionario;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JPresidente extends JFrame {
 
@@ -74,14 +80,26 @@ public class JPresidente extends JFrame {
 		labelAcao.setBounds(53, 79, 161, 14);
 		contentPane.add(labelAcao);
 		
-		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setBounds(53, 104, 137, 22);
+		JComboBox<String> comboBox = new JComboBox<>();
+		List<Funcionario> funcoesP = Arrays.asList(Funcionario.values());
+		comboBox.addItem("Selecione uma das opções:");
+		for(Funcionario opcao : funcoesP) {
+			comboBox.addItem(opcao.getTipo());
+		}
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String tipo = comboBox.getSelectedItem().toString();
+				if(tipo.equalsIgnoreCase(Funcionario.CADASTRAR_CLIENTE.getTipo())) {
+					dispose();
+					JCadastro jCadastro = new JCadastro();
+					jCadastro.setLocationRelativeTo(jCadastro);
+					jCadastro.setVisible(true);
+				}
+			}
+		});
+		comboBox.setBounds(53, 104, 248, 22);
 		contentPane.add(comboBox);
-		comboBox.addItem("Cadastrar Cliente");
-		comboBox.addItem("Cadastrar Gerente");
-		comboBox.addItem("Cadastrar Diretor");
-		comboBox.addItem("Relatório de Diretores");
-		comboBox.addItem("Relatório Valores");
+		
 
 		contentPane.add(comboBox);
 	}

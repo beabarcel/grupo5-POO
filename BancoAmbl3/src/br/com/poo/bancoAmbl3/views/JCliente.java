@@ -1,6 +1,6 @@
 package br.com.poo.bancoAmbl3.views;
 
-import java.awt.EventQueue; 
+import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,24 +25,7 @@ public class JCliente extends JFrame {
 
 	private JPanel contentPane;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JCliente frame = new JCliente();
-					frame.setLocationRelativeTo(frame);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public JCliente() {
+	public JCliente(boolean cc, boolean cp) {
 		setTitle("Área do Cliente - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 366);
@@ -53,7 +36,7 @@ public class JCliente extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel labelCliente = new JLabel("Área do Cliente");
 		labelCliente.setBounds(163, 44, 127, 45);
 		labelCliente.setForeground(new Color(0, 0, 0));
@@ -63,33 +46,46 @@ public class JCliente extends JFrame {
 		JLabel txtAmbl3 = new JLabel("AMBL3");
 		txtAmbl3.setBounds(449, 414, 45, 13);
 		txtAmbl3.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		
+
 		JLabel labelAcesso = new JLabel("Clique aqui para acessar sua conta e ver as opções disponíveis.");
 		labelAcesso.setBounds(46, 215, 374, 13);
 		labelAcesso.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(labelAcesso);
-		
-		JButton botaoAcesso = new JButton("Acessar Conta");
-		botaoAcesso.setBounds(163, 264, 127, 21);
-		contentPane.add(botaoAcesso);
 
-		botaoAcesso.addActionListener((ActionListener) new ActionListener() {
-		    @Override
-		    public void actionPerformed(ActionEvent e) {
-		        JContaCorrente jContaCorrente = new JContaCorrente();
-		        jContaCorrente.setVisible(true);
-		    }
-		});
-
-		
 		JLabel labelBemVindo = new JLabel("Olá! Seja bem-vindo(a) à área do cliente, ");
 		labelBemVindo.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		labelBemVindo.setBounds(110, 108, 222, 48);
 		contentPane.add(labelBemVindo);
-		
+
 		JLabel labelBemVindo2 = new JLabel("aqui você pode acessar sua conta e realizar as operações desejadas!");
 		labelBemVindo2.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		labelBemVindo2.setBounds(46, 143, 343, 13);
 		contentPane.add(labelBemVindo2);
+		if (cc) {
+			JButton botaoContaCorrente = new JButton("Conta Corrente");
+			botaoContaCorrente.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+					JContaCorrente jContaCorrente = new JContaCorrente(cc, cp);
+					jContaCorrente.setLocationRelativeTo(jContaCorrente);
+					jContaCorrente.setVisible(true);
+				}
+			});
+			botaoContaCorrente.setBounds(163, 277, 127, 21);
+			contentPane.add(botaoContaCorrente);
+		}
+		if (cp) {
+			JButton botaoContaPoupanca = new JButton("Conta Poupança");
+			botaoContaPoupanca.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+					JContaPoupanca jContaPoupanca = new JContaPoupanca();
+					jContaPoupanca.setLocationRelativeTo(jContaPoupanca);
+					jContaPoupanca.setVisible(true);
+				}
+			});
+			botaoContaPoupanca.setBounds(163, 325, 127, 21);
+			contentPane.add(botaoContaPoupanca);
+		}
 	}
 }
