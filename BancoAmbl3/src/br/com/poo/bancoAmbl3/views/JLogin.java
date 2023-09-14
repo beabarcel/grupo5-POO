@@ -4,23 +4,18 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
-import java.awt.Window.Type;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JScrollBar;
 
-import javax.swing.SwingConstants;
-import javax.swing.JToggleButton;
-import java.awt.event.KeyEvent;
 import javax.swing.border.LineBorder;
 import javax.swing.border.SoftBevelBorder;
 
@@ -48,6 +43,7 @@ public class JLogin extends JFrame {
 			public void run() {
 				try {
 					JLogin frame = new JLogin();
+					frame.setLocationRelativeTo(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -99,29 +95,37 @@ public class JLogin extends JFrame {
 		JButton botaoEntrar = new JButton("Entrar");
 		botaoEntrar.setBackground(new Color(255, 255, 255));
 		botaoEntrar.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				String cpf = txtCpf.getText();
 				String senha = new String(txtSenha.getPassword());
-				if(Autenticacao.autenticar(cpf, senha)){
-					if(cpf.equals("Cliente")) {
+				Autenticacao autenticacao = new Autenticacao();
+				boolean autenticou = autenticacao.autenticar(cpf, senha);
+				System.out.println("TIPO PESSOA: " + autenticacao.getTipoPessoa());
+				if(autenticou){
+					if(autenticacao.getTipoPessoa().equals("CLIENTE")) {
 						JCliente jCliente = new JCliente();
+						jCliente.setLocationRelativeTo(jCliente);
 						jCliente.setVisible(true);
-					}else if(cpf.equals("Gerente")) {
+					}else if(autenticacao.getTipoPessoa().equals("GERENTE")) {
 						JGerente jGerente = new JGerente();
+						jGerente.setLocationRelativeTo(jGerente);
 						jGerente.setVisible(true);
-					}else if(cpf.equals("Diretor")) {
+					}else if(autenticacao.getTipoPessoa().equals("DIRETOR")) {
 						JDiretor jDiretor = new JDiretor();
+						jDiretor.setLocationRelativeTo(jDiretor);
 						jDiretor.setVisible(true);
-					}else if(cpf.equals("Presidente")) {
+					}else if(autenticacao.getTipoPessoa().equals("PRESIDENTE")) {
 						JPresidente jPresidente = new JPresidente();
+						jPresidente.setLocationRelativeTo(jPresidente);
 						jPresidente.setVisible(true);
 						
 					}else {
-						JOptionPane.showMessageDialog(null, "Erro! Credencias Inválidas.", "Aviso", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Erro! Credenciais Inválidas.", "Aviso", JOptionPane.WARNING_MESSAGE);
 					}
 					dispose();					
 				}
-				}
+			}
 		});
 		botaoEntrar.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		botaoEntrar.setBounds(206, 266, 94, 21);
@@ -143,23 +147,6 @@ public class JLogin extends JFrame {
 		labelIntro.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		labelIntro.setBounds(102, 24, 334, 21);
 		contentPane.add(labelIntro);
-
-		JButton botaoCadastro = new JButton("Novo por aqui? Cadastre-se.");
-		botaoCadastro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-		        JCadastroCliente jCadastroLogin = new JCadastroCliente();
-				jCadastroLogin.setVisible(true);
-		    }
-		});
-		getContentPane().add(botaoCadastro);
-			
-	
-		botaoCadastro.setMnemonic(KeyEvent.VK_JAPANESE_KATAKANA);
-		botaoCadastro.setVerticalAlignment(SwingConstants.TOP);
-		botaoCadastro.setForeground(new Color(0, 0, 0));
-		botaoCadastro.setBackground(new Color(64, 128, 128));
-		botaoCadastro.setBounds(160, 307, 186, 21);
-		contentPane.add(botaoCadastro);
 
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("./imagens/Screenshot_2023-09-11_at_16.31.57.png"));

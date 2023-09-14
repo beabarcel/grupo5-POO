@@ -29,6 +29,7 @@ public class JContaPoupanca extends JFrame {
 			public void run() {
 				try {
 					JContaPoupanca frame = new JContaPoupanca();
+					frame.setLocationRelativeTo(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,10 +42,11 @@ public class JContaPoupanca extends JFrame {
 	 * Create the frame.
 	 */
 	public JContaPoupanca() {
+		setTitle("Conta Poupança - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 480);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(0, 128, 128));
+		contentPane.setBackground(new Color(64, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);

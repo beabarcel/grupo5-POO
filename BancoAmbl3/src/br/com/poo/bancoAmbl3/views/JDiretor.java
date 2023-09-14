@@ -16,8 +16,6 @@ import java.awt.Dimension;
 public class JDiretor extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField usuarioD;
-	private JPasswordField senhaD;
 
 	/**
 	 * Launch the application.
@@ -39,41 +37,19 @@ public class JDiretor extends JFrame {
 	 * Create the frame.
 	 */
 	public JDiretor() {
-		setTitle("Aba de acesso Diretor ");
+		setTitle("Acesso Diretoria");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 480);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(63, 191, 162));
+		contentPane.setBackground(new Color(64, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel usuarioDiretor = new JLabel("Usuario:");
-		usuarioDiretor.setBounds(68, 129, 70, 15);
-		contentPane.add(usuarioDiretor);
-		
-		JLabel acessoDiretor = new JLabel("Acesso Diretor");
-		acessoDiretor.setBounds(90, 46, 202, 27);
-		acessoDiretor.setFont(new Font("Dialog", Font.BOLD, 22));
+		JLabel acessoDiretor = new JLabel("Acesso Diretoria");
+		acessoDiretor.setBounds(148, 58, 134, 27);
+		acessoDiretor.setFont(new Font("Tahoma", Font.BOLD, 15));
 		contentPane.add(acessoDiretor);
-		
-		usuarioD = new JTextField();
-		usuarioD.setBounds(68, 145, 256, 34);
-		contentPane.add(usuarioD);
-		usuarioD.setColumns(10);
-		
-		JLabel senhaDiretor = new JLabel("Senha:");
-		senhaDiretor.setBounds(68, 225, 70, 15);
-		contentPane.add(senhaDiretor);
-		
-		senhaD = new JPasswordField();
-		senhaD.setMaximumSize(new Dimension(50, 50));
-		senhaD.setBounds(68, 239, 256, 34);
-		contentPane.add(senhaD);
-		
-		JButton btnEntrar = new JButton("Entrar");
-		btnEntrar.setBounds(130, 303, 117, 25);
-		contentPane.add(btnEntrar);
 	}
 }
