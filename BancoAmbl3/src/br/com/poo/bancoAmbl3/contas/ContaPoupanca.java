@@ -28,10 +28,10 @@ public class ContaPoupanca extends Conta {
 	public void setTaxa(double taxa) {
 		this.taxa = taxa;
 	}
-
-	public double totalRendimento() {
-		this.rendimento = this.getSaldo() * taxa;
-		setSaldo(this.getSaldo() + this.getSaldo() * taxa);
+	
+	public double relatorioRendimento(int dias, double valor) {
+		double meses = dias / 30.44;
+		this.rendimento = valor * taxa * meses;
 		return rendimento;
 	}
 

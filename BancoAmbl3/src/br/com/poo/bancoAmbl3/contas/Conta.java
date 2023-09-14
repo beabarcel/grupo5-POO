@@ -74,6 +74,10 @@ public class Conta {
 			return true;
 		}
 	}
+	
+	public void imprimirExtrato() {
+		
+	}
 
 	@Override
 	public String toString() {
