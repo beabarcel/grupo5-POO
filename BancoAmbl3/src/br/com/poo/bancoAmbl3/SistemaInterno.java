@@ -5,6 +5,7 @@ import java.util.Map;
 
 import br.com.poo.bancoAmbl3.contas.Conta;
 import br.com.poo.bancoAmbl3.contas.ContaCorrente;
+import br.com.poo.bancoAmbl3.contas.ContaPoupanca;
 import br.com.poo.bancoAmbl3.io.LeituraEscrita;
 import br.com.poo.bancoAmbl3.pessoas.Cliente;
 import br.com.poo.bancoAmbl3.pessoas.Diretor;
@@ -25,10 +26,12 @@ public class SistemaInterno {
 		Map<String, Diretor> diretor = new Diretor().buscarDiretor();
 		Map<String, Presidente> presidente = new Presidente().buscarPresidente();
 		Map<String, ContaCorrente> CC = new ContaCorrente().buscarCC();
+		Map<String, ContaPoupanca> CP = new ContaPoupanca().buscarCP();
 
-//	  System.out.println(clientes + "\n");
-//	  System.out.println(gerentes + "\n");
-//	  System.out.println(diretor +"\n");
+	  System.out.println(clientes + "\n");
+	  System.out.println(gerentes + "\n");
+	  System.out.println(diretor +"\n");
+		System.out.println(CP);
 		System.out.println(CC);
 
 	}

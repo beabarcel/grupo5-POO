@@ -137,6 +137,7 @@ public class JContaCorrente extends JFrame {
 		contentPane_1.add(lblTransfernciaRvinte);
 		
 		JButton botaoVoltar = new JButton("Voltar");
+		botaoVoltar.setFont(new Font("Dialog", Font.BOLD, 12));
 		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -145,7 +146,7 @@ public class JContaCorrente extends JFrame {
 				jCliente.setVisible(true);
 			}
 		});
-		botaoVoltar.setBounds(314, 397, 85, 21);
+		botaoVoltar.setBounds(329, 407, 89, 23);
 		contentPane_1.add(botaoVoltar);
 	}
 }

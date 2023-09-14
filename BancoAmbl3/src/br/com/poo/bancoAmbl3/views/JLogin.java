@@ -22,6 +22,7 @@ import javax.swing.border.SoftBevelBorder;
 
 import br.com.poo.bancoAmbl3.LigacaoViews.Autenticacao;
 import br.com.poo.bancoAmbl3.contas.ContaCorrente;
+import br.com.poo.bancoAmbl3.contas.ContaPoupanca;
 
 import javax.swing.border.BevelBorder;
 
@@ -91,9 +92,9 @@ public class JLogin extends JFrame {
 							if (ContaCorrente.buscarCC().get(cpf) != null) {
 								verificaCorrente = true;
 							}
-							// if(ContaPoupanca.buscarCP().get(cpf) != null) {
-							// verificaPoupanca = true;
-							// }
+							 if(ContaPoupanca.buscarCP().get(cpf) != null) {
+								 verificaPoupanca = true;
+							 }
 							dispose();
 							JCliente jCliente = new JCliente(verificaCorrente, verificaPoupanca);
 							jCliente.setLocationRelativeTo(jCliente);

@@ -20,9 +20,9 @@ public class ContaCorrente extends Conta {
 		super(saldo, titular);
 	}
 
-	public ContaCorrente(String tipoConta, String cpfTitular, String titular, String agencia, double saldo,
+	public ContaCorrente(String cpfTitular, String titular, String agencia, double saldo,
 			int numeroConta) {
-		super(tipoConta, cpfTitular, titular, agencia, saldo, numeroConta);
+		super(cpfTitular, titular, agencia, saldo, numeroConta);
 	}
 
 	public boolean getStatus() {
@@ -90,9 +90,9 @@ public class ContaCorrente extends Conta {
 
 	@Override
 	public String toString() {
-		return "\nContaCorrente " + ",Tipo da Conta = " + getTipoConta() + "CPF do Titular= " + getCpfTitular()
+		return "\nContaCorrente " + " CPF do Titular= " + getCpfTitular()
 				+ "Titular= " + getTitular() + ", Agencia()=" + getAgencia() + ", Saldo= " + getSaldo()
-				+ ", getAgencia()=" + getAgencia() + ", getTipoConta()=" + getTipoConta() + "Numero da Conta"
+				+ ", getAgencia()=" + getAgencia() + "Numero da Conta"
 				+ getNumeroConta() + "]";
 	}
 
@@ -101,10 +101,10 @@ public class ContaCorrente extends Conta {
 		Map<String, ContaCorrente> CC = new HashMap<>();
 		for (String registro : registros.keySet()) {
 			String linha = registros.get(registro);
-			CC.put(linha.split(",")[2],
-					new ContaCorrente(linha.split(",")[1], linha.split(",")[2], linha.split(",")[3],
-							linha.split(",")[4], Double.parseDouble(linha.split(",")[5]),
-							Integer.parseInt(linha.split(",")[6])));
+			CC.put(linha.split(",")[1],
+					new ContaCorrente(linha.split(",")[1], linha.split(",")[2],
+							linha.split(",")[3], Double.parseDouble(linha.split(",")[4]),
+							Integer.parseInt(linha.split(",")[5])));
 		}
 
 		return CC;

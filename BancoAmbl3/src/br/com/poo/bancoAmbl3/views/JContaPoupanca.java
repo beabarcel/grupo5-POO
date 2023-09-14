@@ -14,6 +14,8 @@ import javax.swing.JToggleButton;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JContaPoupanca extends JFrame {
 
@@ -21,27 +23,7 @@ public class JContaPoupanca extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JContaPoupanca frame = new JContaPoupanca();
-					frame.setLocationRelativeTo(frame);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public JContaPoupanca() {
+	public JContaPoupanca(boolean corrente, boolean poupanca) {
 		setTitle("Conta Poupança - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 480);
@@ -147,5 +129,20 @@ public class JContaPoupanca extends JFrame {
 		btnNewButton_1_1_2.setBackground(UIManager.getColor("Button.background"));
 		btnNewButton_1_1_2.setBounds(10, 312, 119, 23);
 		contentPane.add(btnNewButton_1_1_2);
+		
+		JButton btnNewButton_1_1_1_1 = new JButton("Voltar");
+		btnNewButton_1_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+                dispose();
+                JCliente jCliente = new JCliente(corrente, poupanca);
+                jCliente.setLocationRelativeTo(jCliente);
+                jCliente.setVisible(true);
+            }
+		});
+		btnNewButton_1_1_1_1.setForeground(new Color(0, 51, 51));
+		btnNewButton_1_1_1_1.setFont(new Font("Dialog", Font.BOLD, 12));
+		btnNewButton_1_1_1_1.setBackground(UIManager.getColor("Button.background"));
+		btnNewButton_1_1_1_1.setBounds(329, 407, 89, 23);
+		contentPane.add(btnNewButton_1_1_1_1);
 	}
 }

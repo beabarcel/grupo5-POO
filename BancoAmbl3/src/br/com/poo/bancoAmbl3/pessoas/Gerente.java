@@ -51,7 +51,7 @@ public class Gerente extends Funcionario implements FolhaDePagamento {
 	}
 
 	public Map<String, Gerente> buscarGerente() throws IOException {
-		Map<String, String> registros = LeituraEscrita.leitor(TipoRegistro.DIRETOR);
+		Map<String, String> registros = LeituraEscrita.leitor(TipoRegistro.GERENTE);
 		Map<String, Gerente> gerentes = new HashMap<>();
 		for (String registro : registros.keySet()) {
 			String linha = registros.get(registro);

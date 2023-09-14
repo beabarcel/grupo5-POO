@@ -79,7 +79,7 @@ public class JCliente extends JFrame {
 			botaoContaPoupanca.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					dispose();
-					JContaPoupanca jContaPoupanca = new JContaPoupanca();
+					JContaPoupanca jContaPoupanca = new JContaPoupanca(cc, cp);
 					jContaPoupanca.setLocationRelativeTo(jContaPoupanca);
 					jContaPoupanca.setVisible(true);
 				}

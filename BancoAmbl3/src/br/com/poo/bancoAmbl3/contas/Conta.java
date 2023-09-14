@@ -4,10 +4,7 @@ package br.com.poo.bancoAmbl3.contas;
 
 public abstract class Conta {
 	private static int contador = 1;
-
-	private String tipoConta;
 	
-
 	private String cpfTitular;
 	private String titular;
 	private String agencia;
@@ -26,9 +23,8 @@ public abstract class Conta {
 		this.titular = titular;
 		Conta.contador++;
 	}
-	public Conta(String tipoConta, String cpfTitular, String titular, String agencia, double saldo, int numeroConta) {
+	public Conta(String cpfTitular, String titular, String agencia, double saldo, int numeroConta) {
 		super();
-		this.tipoConta = tipoConta;
 		this.cpfTitular = cpfTitular;
 		this.titular = titular;
 		this.agencia = agencia;
@@ -58,14 +54,6 @@ public abstract class Conta {
 	public String getAgencia() {
 		return agencia;
 	}
-
-	public String getTipoConta() {
-		return tipoConta;
-	}
-
-	public void setTipoConta(String tipoConta) {
-		this.tipoConta = tipoConta;
-	}
 	
     public abstract boolean depositar(double valor);
     
@@ -79,5 +67,4 @@ public abstract class Conta {
 	public String toString() {
 		return "Conta [saldo=" + saldo + ", titular=" + titular + ", numeroConta=" + numeroConta + "]";
 	}
-
 }

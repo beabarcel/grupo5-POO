@@ -89,7 +89,7 @@ public class JPresidente extends JFrame {
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String tipo = comboBox.getSelectedItem().toString();
-				if(tipo.equalsIgnoreCase(Funcionario.CADASTRAR_CLIENTE.getTipo())) {
+				if(tipo.equalsIgnoreCase(Funcionario.CADASTRAR_CONTA.getTipo())) {
 					dispose();
 					JCadastro jCadastro = new JCadastro();
 					jCadastro.setLocationRelativeTo(jCadastro);
