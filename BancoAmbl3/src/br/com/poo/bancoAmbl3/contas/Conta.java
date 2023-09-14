@@ -6,6 +6,8 @@ public class Conta {
 	private static int contador = 1;
 
 	private String tipoConta;
+	
+
 	private String cpfTitular;
 	private String titular;
 	private String agencia;
@@ -24,7 +26,16 @@ public class Conta {
 		this.titular = titular;
 		Conta.contador++;
 	}
-
+	public Conta(String tipoConta, String cpfTitular, String titular, String agencia, double saldo, int numeroConta) {
+		super();
+		this.tipoConta = tipoConta;
+		this.cpfTitular = cpfTitular;
+		this.titular = titular;
+		this.agencia = agencia;
+		this.saldo = saldo;
+		this.numeroConta = numeroConta;
+	}
+	
 	public double getSaldo() {
 		return saldo;
 	}

@@ -6,4 +6,7 @@ public enum TipoRegistro {
 	GERENTE,
 	DIRETOR,
 	PRESIDENTE,
+	CONTACORRENTE,
+	CONTAPOUPANCA,
+	
 }
