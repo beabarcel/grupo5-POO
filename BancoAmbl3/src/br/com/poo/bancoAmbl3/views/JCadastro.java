@@ -18,6 +18,10 @@ import javax.swing.ImageIcon;
 
 public class JCadastro extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JPasswordField txtNovaSenha;
 	private JTextField txtNovoCpf;

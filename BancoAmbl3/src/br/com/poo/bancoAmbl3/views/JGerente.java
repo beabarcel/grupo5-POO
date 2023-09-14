@@ -9,11 +9,8 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
-import javax.swing.JCheckBox;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
-import javax.swing.ImageIcon;
-import java.awt.SystemColor;
 
 public class JGerente extends JFrame {
 
