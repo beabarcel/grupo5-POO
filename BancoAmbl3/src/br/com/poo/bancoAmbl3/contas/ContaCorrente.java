@@ -6,7 +6,7 @@ import java.util.Map;
 
 import br.com.poo.bancoAmbl3.enums.TipoRegistro;
 import br.com.poo.bancoAmbl3.io.LeituraEscrita;
-import br.com.poo.bancoAmbl3.pessoas.Cliente;
+//import br.com.poo.bancoAmbl3.pessoas.Cliente;
 
 public class ContaCorrente extends Conta {
 	private boolean status;
@@ -54,7 +54,7 @@ public class ContaCorrente extends Conta {
 
 	@Override
 	public boolean sacar(double valor) {
-		if (valor > getSaldo() || valor <= 0) {
+		if (valor > getSaldo() + 0.10 || valor <= 0.10) {
 			return false;
 		} else {
 			setSaldo(getSaldo() - valor - 0.10);
@@ -83,7 +83,18 @@ public class ContaCorrente extends Conta {
 			return false;
 		}
 	}
-
+	
+	@Override
+	public boolean tranferir(Conta destino, double valor) {
+		boolean retirou = this.sacar(valor);
+		if(!retirou) {
+			return false;
+		} else {
+			destino.depositar(valor);
+			return true;
+		}
+	}
+	
 	public void relatorioTributacao() {
 
 	}

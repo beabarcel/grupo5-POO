@@ -1,6 +1,7 @@
 package br.com.poo.bancoAmbl3.contas;
 
 import java.io.IOException;
+//import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,7 +9,7 @@ import br.com.poo.bancoAmbl3.enums.TipoRegistro;
 import br.com.poo.bancoAmbl3.io.LeituraEscrita;
 
 public class ContaPoupanca extends Conta {
-
+	
 	private double rendimento;
 	private double taxa = 0.15;
 
@@ -53,6 +54,17 @@ public class ContaPoupanca extends Conta {
 	}
 	
 	@Override
+	public boolean tranferir(Conta destino, double valor) {
+		boolean retirou = this.sacar(valor);
+		if(!retirou) {
+			return false;
+		} else {
+			destino.depositar(valor);
+			return true;
+		}
+	}
+	
+	@Override
 	public boolean sacar(double valor) {
 		if (valor > getSaldo() || valor <= 0) {
 			return false;
@@ -90,5 +102,7 @@ public class ContaPoupanca extends Conta {
 		return CP;
 
 	}
+
+	
 
 }

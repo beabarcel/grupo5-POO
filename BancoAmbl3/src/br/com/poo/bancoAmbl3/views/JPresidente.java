@@ -1,7 +1,6 @@
 package br.com.poo.bancoAmbl3.views;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.util.Arrays;
 import java.util.List;
@@ -26,25 +25,6 @@ public class JPresidente extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JPresidente frame = new JPresidente();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public JPresidente() {
 		setTitle("Acesso Presidencial - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,6 +49,11 @@ public class JPresidente extends JFrame {
 		contentPane.add(txtAmbl3);
 		
 		JButton botaoSair = new JButton("Sair");
+		botaoSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		botaoSair.setForeground(new Color(0, 0, 0));
 		botaoSair.setBackground(new Color(255, 255, 255));
 		botaoSair.setBounds(209, 328, 92, 22);
@@ -90,10 +75,16 @@ public class JPresidente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String tipo = comboBox.getSelectedItem().toString();
 				if(tipo.equalsIgnoreCase(Funcionario.CADASTRAR_CONTA.getTipo())) {
-					dispose();
+					//dispose();
 					JCadastro jCadastro = new JCadastro();
 					jCadastro.setLocationRelativeTo(jCadastro);
 					jCadastro.setVisible(true);
+				} else if(tipo.equalsIgnoreCase(Funcionario.RELATORIO_DIRETORES.getTipo())) {
+					//dispose();
+					//implementar relatorio diretores
+				} else if(tipo.equalsIgnoreCase(Funcionario.RELATORIO_VALORES.getTipo())) {
+					//dispose();
+					//implementar relatorio valores
 				}
 			}
 		});

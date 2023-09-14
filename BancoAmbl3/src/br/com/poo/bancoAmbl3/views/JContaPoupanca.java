@@ -1,27 +1,30 @@
 package br.com.poo.bancoAmbl3.views;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.JToggleButton;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.ImageIcon;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+
+import br.com.poo.bancoAmbl3.LigacaoViews.Autenticacao;
+import br.com.poo.bancoAmbl3.contas.ContaPoupanca;
 
 public class JContaPoupanca extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField textValor;
+	private JTextField textDias;
+	DecimalFormat df = new DecimalFormat("#,###.00");
 
 	public JContaPoupanca(boolean corrente, boolean poupanca) {
 		setTitle("Conta Poupança - Sistema Bancário");
@@ -39,8 +42,9 @@ public class JContaPoupanca extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblOlPessoa = new JLabel("Olá Nome!");
-		lblOlPessoa.setBounds(10, 27, 121, 25);
+		Autenticacao a = new Autenticacao();
+		JLabel lblOlPessoa = new JLabel("Olá " + a.nome() + "!" );
+		lblOlPessoa.setBounds(10, 27, 217, 25);
 		panel.add(lblOlPessoa);
 		lblOlPessoa.setFont(new Font("Dialog", Font.PLAIN, 20));
 		lblOlPessoa.setForeground(new Color(0, 128, 128));
@@ -52,11 +56,11 @@ public class JContaPoupanca extends JFrame {
 		lblNewLabel.setBounds(10, 74, 46, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("R$00,00");
-		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 25));
-		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setBounds(10, 102, 107, 30);
-		contentPane.add(lblNewLabel_1);
+		JLabel textSaldo = new JLabel("R$" + a.saldo());
+		textSaldo.setFont(new Font("Dialog", Font.BOLD, 25));
+		textSaldo.setForeground(new Color(255, 255, 255));
+		textSaldo.setBounds(10, 102, 269, 30);
+		contentPane.add(textSaldo);
 		
 		JButton btnNewButton = new JButton("Imprimir extrato");
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 12));
@@ -74,17 +78,17 @@ public class JContaPoupanca extends JFrame {
 		panel_1.setBounds(10, 142, 408, 2);
 		contentPane.add(panel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(311, 264, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textValor = new JTextField();
+		textValor.setBounds(311, 264, 86, 20);
+		contentPane.add(textValor);
+		textValor.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(101, 266, 86, 20);
-		contentPane.add(textField_1);
+		textDias = new JTextField();
+		textDias.setColumns(10);
+		textDias.setBounds(101, 266, 86, 20);
+		contentPane.add(textDias);
 		
-		JLabel lblPrazomeses = new JLabel("Prazo (meses)");
+		JLabel lblPrazomeses = new JLabel("Prazo (dias)");
 		lblPrazomeses.setHorizontalAlignment(SwingConstants.LEFT);
 		lblPrazomeses.setForeground(Color.WHITE);
 		lblPrazomeses.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -124,6 +128,16 @@ public class JContaPoupanca extends JFrame {
 		contentPane.add(panel_1_1);
 		
 		JButton btnNewButton_1_1_2 = new JButton("Fazer Relatório");
+		btnNewButton_1_1_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Integer dias = Integer.parseInt(textDias.getText());
+				Double valor = Double.parseDouble(textValor.getText());
+				ContaPoupanca contap = new ContaPoupanca();
+				JOptionPane.showMessageDialog(null, "Rendimendo total $"
+				+ df.format(contap.relatorioRendimento(dias, valor)) , "Relatório",
+						JOptionPane.DEFAULT_OPTION);
+			}
+		});
 		btnNewButton_1_1_2.setForeground(new Color(0, 51, 51));
 		btnNewButton_1_1_2.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnNewButton_1_1_2.setBackground(UIManager.getColor("Button.background"));

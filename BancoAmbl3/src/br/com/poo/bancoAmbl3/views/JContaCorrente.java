@@ -39,7 +39,7 @@ public class JContaCorrente extends JFrame {
 		lblNewLabel_3.setBounds(347, 11, 71, 30);
 		contentPane_1.add(lblNewLabel_3);
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setIcon(new ImageIcon(JContaCorrente.class.getResource("/br/com/poo/imagens/Logo.png")));
+		lblNewLabel_3.setIcon(new ImageIcon(JContaCorrente.class.getResource("/br/com/poo/imagens/Logo-p.png")));
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
@@ -66,6 +66,11 @@ public class JContaCorrente extends JFrame {
 		contentPane_1.add(lblNewLabel_1);
 		
 		JButton btnNewButton = new JButton("Imprimir extrato");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//
+			}
+		});
 		btnNewButton.setForeground(new Color(0, 51, 51));
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnNewButton.setBounds(289, 106, 129, 23);
@@ -82,6 +87,11 @@ public class JContaCorrente extends JFrame {
 		contentPane_1.add(panel_1);
 		
 		JButton btnNewButton_1 = new JButton("Sacar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnNewButton_1.setForeground(new Color(0, 51, 51));
 		btnNewButton_1.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnNewButton_1.setBackground(UIManager.getColor("Button.background"));

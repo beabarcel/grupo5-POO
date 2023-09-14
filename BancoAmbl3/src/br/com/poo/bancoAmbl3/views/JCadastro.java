@@ -39,22 +39,6 @@ public class JCadastro extends JFrame {
 	private JTextField txtNovoTelefone;
 	private JTextField txtNovoEmail;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JCadastro frame = new JCadastro();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public JCadastro() {
 		setTitle("Cadastro - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -101,7 +85,7 @@ public class JCadastro extends JFrame {
 		txtAmbl3.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		
 		JButton botaoSalvarCadastro = new JButton("Cadastrar");
-		botaoSalvarCadastro.setBounds(167, 382, 94, 21);
+		botaoSalvarCadastro.setBounds(90, 382, 94, 21);
 		botaoSalvarCadastro.setBackground(new Color(255, 255, 255));
 		contentPane.add(botaoSalvarCadastro);
 		
@@ -155,7 +139,9 @@ public class JCadastro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String tipo = tipoConta.getSelectedItem().toString();
 				if(tipo.equalsIgnoreCase(TipoConta.CONTA_CORRENTE.getTipo())) {
-					
+					//
+				} else if(tipo.equalsIgnoreCase(TipoConta.CONTA_POUPANCA.getTipo())) {
+					//
 				}
 			}
 		});
@@ -167,6 +153,15 @@ public class JCadastro extends JFrame {
 		lblTipoDaConta.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblTipoDaConta.setBounds(90, 318, 113, 13);
 		contentPane.add(lblTipoDaConta);
+		
+		JButton sairButton = new JButton("Sair");
+		sairButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		sairButton.setBounds(249, 381, 89, 23);
+		contentPane.add(sairButton);
 		
 	}
 }

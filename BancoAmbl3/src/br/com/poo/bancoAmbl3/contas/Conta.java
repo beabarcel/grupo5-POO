@@ -1,5 +1,7 @@
 package br.com.poo.bancoAmbl3.contas;
 
+
+
 //import java.util.Date;
 
 public abstract class Conta {
@@ -58,6 +60,9 @@ public abstract class Conta {
     public abstract boolean depositar(double valor);
     
     public abstract boolean sacar(double valor);
+    
+    public abstract boolean tranferir(Conta destino, double valor);
+		
 	
 	public void imprimirExtrato() {
 		

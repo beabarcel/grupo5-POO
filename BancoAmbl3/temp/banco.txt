@@ -4,7 +4,8 @@ CLIENTE,Liliane David,524.896.570-51,lilidavid@hotmail.com,24569874512,678
 CLIENTE,Lucas Latsch,001.452.569-87,lucaslatsch@yahoo.com,24658974581,901
 CLIENTE,Lucas Caiafa,254.136.587-94,lucascaiafa@gmail.com,24565874569,234
 CLIENTE,Amanda Tavares,076.549.877-52,amandat@gmail.com,24998723456,567
-CLIENTE,Luiz Inacio,46.467.820-73,luizinacio@yahoo.com,24988675339,233
+CLIENTE,Luiz Inacio,8
+46.467.820-73,luizinacio@yahoo.com,24988675339,233
 CLIENTE,Livia Silva,397.880.140-03,liviasilva@yahoo.com,24984375339,434
 CLIENTE,Pedro Souza,982.414.290-88,pedrosouza@yahoo.com,24988675909,957
 GERENTE,Daniela Cruz,329.547.851-23,cruzdaniela@bancoambl3@gmail.com,35012459879,890
