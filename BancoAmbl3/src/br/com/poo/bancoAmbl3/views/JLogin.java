@@ -42,6 +42,7 @@ public class JLogin extends JFrame {
 			public void run() {
 				try {
 					JLogin frame = new JLogin();
+					frame.setLocationRelativeTo(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -93,25 +94,31 @@ public class JLogin extends JFrame {
 		JButton botaoEntrar = new JButton("Entrar");
 		botaoEntrar.setBackground(new Color(255, 255, 255));
 		botaoEntrar.addActionListener(new ActionListener() {
+			 @Override
 			public void actionPerformed(ActionEvent e) {
 				String cpf = txtCpf.getText();
 				String senha = new String(txtSenha.getPassword());
-				if(Autenticacao.autenticar(cpf, senha)){
-					if(cpf.equals("Cliente")) {
+				Autenticacao autenticacao = new Autenticacao();
+				if(autenticacao.autenticar(cpf, senha)){
+					if(autenticacao.getTipoPessoa().equals("JCliente")) {
 						JCliente jCliente = new JCliente();
+						jCliente.setLocationRelativeTo(jCliente);
 						jCliente.setVisible(true);
-					}else if(cpf.equals("Gerente")) {
+					}else if(autenticacao.getTipoPessoa().equals("JGerente")) {
 						JGerente jGerente = new JGerente();
+						jGerente.setLocationRelativeTo(jGerente);
 						jGerente.setVisible(true);
-					}else if(cpf.equals("Diretor")) {
+					}else if(autenticacao.getTipoPessoa().equals("JDiretor")) {
 						JDiretor jDiretor = new JDiretor();
+						jDiretor.setLocationRelativeTo(jDiretor);
 						jDiretor.setVisible(true);
-					}else if(cpf.equals("Presidente")) {
+					}else if(autenticacao.getTipoPessoa().equals("JPresidente")) {
 						JPresidente jPresidente = new JPresidente();
+						jPresidente.setLocationRelativeTo(jPresidente);
 						jPresidente.setVisible(true);
 						
 					}else {
-						JOptionPane.showMessageDialog(null, "Erro! Credencias Inválidas.", "Aviso", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Erro! Credenciais Inválidas.", "Aviso", JOptionPane.WARNING_MESSAGE);
 					}
 					dispose();					
 				}

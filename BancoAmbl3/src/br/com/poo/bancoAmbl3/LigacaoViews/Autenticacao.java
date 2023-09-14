@@ -5,17 +5,23 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Autenticacao {
-	
-	public static boolean autenticar(String cpf, String senha) {
+
+	private String tipoPessoa = null;
+				
+	public String getTipoPessoa(){
+		return tipoPessoa;
+	}	
+	public boolean autenticar(String cpf, String senha) {
 		try {
-			FileReader fileReader = new FileReader("grupo5-POO/BancoAmbl3/temp/banco.txt");
+			FileReader fileReader = new FileReader("temp\\banco.txt");
 			try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 				String linha;
 				while ((linha = bufferedReader.readLine()) != null) {
 					String[] partes = linha.split(",");
-					String txtCpf = partes[3];
-					String txtSenha = partes[4];
-					
+					String txtCpf = partes[2];
+					String txtSenha = partes[5];
+				
+					this.tipoPessoa = partes[0];
 					if (cpf.equals(txtCpf) && senha.equals(txtSenha)){
 						return true;
 						

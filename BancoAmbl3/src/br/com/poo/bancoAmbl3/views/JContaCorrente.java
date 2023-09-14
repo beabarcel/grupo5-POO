@@ -29,6 +29,7 @@ public class JContaCorrente extends JFrame {
 			public void run() {
 				try {
 					JContaCorrente frame = new JContaCorrente();
+					frame.setLocationRelativeTo(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,6 +42,7 @@ public class JContaCorrente extends JFrame {
 	 * Create the frame.
 	 */
 	public JContaCorrente() {
+		setTitle("Conta Corrente - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 480);
 		contentPane = new JPanel();
@@ -52,7 +54,7 @@ public class JContaCorrente extends JFrame {
 		JPanel contentPane_1 = new JPanel();
 		contentPane_1.setLayout(null);
 		contentPane_1.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane_1.setBackground(new Color(0, 128, 128));
+		contentPane_1.setBackground(new Color(64, 128, 128));
 		contentPane_1.setBounds(0, 0, 428, 441);
 		contentPane.add(contentPane_1);
 		
