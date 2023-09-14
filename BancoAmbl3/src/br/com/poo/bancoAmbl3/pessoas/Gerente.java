@@ -55,7 +55,7 @@ public class Gerente extends Funcionario implements FolhaDePagamento {
 		Map<String, Gerente> gerentes = new HashMap<>();
 		for (String registro : registros.keySet()) {
 			String linha = registros.get(registro);
-			gerentes.put(linha.split(",")[1], new Gerente(linha.split(",")[1], linha.split(",")[2], linha.split(",")[3],
+			gerentes.put(linha.split(",")[2], new Gerente(linha.split(",")[1], linha.split(",")[2], linha.split(",")[3],
 					linha.split(",")[4], linha.split(",")[5]));
 
 		}
@@ -64,7 +64,8 @@ public class Gerente extends Funcionario implements FolhaDePagamento {
 
 	@Override
 	public String toString() {
-		return "Gerente [agencia=" + agencia + "]";
+		return "\nGerente [Nome()=" + getNome() + ", getCpf()=" + getCpf() + ", getEmail()=" + getEmail()
+				+ ", getTelefone()=" + getTelefone() + ", getSenha()=" + getSenha() + "]";
 	}
 
 }

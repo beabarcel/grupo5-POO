@@ -90,6 +90,6 @@ public class Funcionario implements FolhaDePagamento {
 
 	@Override
 	public String toString() {
-		return "Funcionario [nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", telefone=" + telefone +", senha=" + senha + "]";
+		return "\nFuncionario [nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", telefone=" + telefone +", senha=" + senha + "]";
 	}
 }

@@ -15,13 +15,18 @@ public class SistemaInterno {
 
 	public static void main(String[] args) throws IOException {
 		
-		JLogin jl = new JLogin();
-		jl.setLocationRelativeTo(jl);
-		jl.setVisible(true);
+//		JLogin jl = new JLogin();
+//		jl.setLocationRelativeTo(jl);
+//		jl.setVisible(true);
 		
 	  Map<String, Cliente> clientes = new Cliente().buscarClientes();
 	  Map<String, Gerente> gerentes = new Gerente().buscarGerente();
 	  Map<String, Diretor> diretor = new Diretor().buscarDiretor();
 	  Map<String, Presidente> presidente = new Presidente().buscarPresidente();
+	  
+	  System.out.println(clientes + "\n");
+	  System.out.println(gerentes + "\n");
+	  System.out.println(diretor +"\n");
+	  System.out.println(presidente);
 	}
 }

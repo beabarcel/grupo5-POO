@@ -30,7 +30,7 @@ public class Presidente extends Funcionario implements FolhaDePagamento {
 		Map<String, Presidente> presidente = new HashMap<>();
 		for (String registro : registros.keySet()) {
 			String linha = registros.get(registro);
-			presidente.put(linha.split(",")[1], new Presidente(linha.split(",")[1], linha.split(",")[2],
+			presidente.put(linha.split(",")[2], new Presidente(linha.split(",")[1], linha.split(",")[2],
 					linha.split(",")[3], linha.split(",")[4], linha.split(",")[5]));
 		}
 		return presidente;
@@ -56,4 +56,5 @@ public class Presidente extends Funcionario implements FolhaDePagamento {
 	public String toString() {
 		return super.toString();
 	}
+	
 }

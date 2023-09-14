@@ -50,7 +50,7 @@ public class Diretor extends Funcionario {
 
 	@Override
 	public String toString() {
-		return "Diretor [agencias=" + Arrays.toString(agencias) + ", getNome()=" + getNome() + ", getCpf()=" + getCpf()
+		return "\nDiretor [agencias=" + Arrays.toString(agencias) + ", getNome()=" + getNome() + ", getCpf()=" + getCpf()
 				+ ", getEmail()=" + getEmail() + ", getTelefone()=" + getTelefone() + ", getCargo()=" + getCargo()
 				+ "]";
 	}

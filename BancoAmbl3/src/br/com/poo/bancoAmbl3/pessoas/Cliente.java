@@ -80,7 +80,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente [nome=" + nome + ", cpf=" + cpf + ", email= " + email +  ", Telefone= " + telefone + ", senha="
+		return "Cliente [\nnome=" + nome + ", cpf=" + cpf + ", email= " + email +  ", Telefone= " + telefone + ", senha="
 				+ senha + "]";
 	}
 }
