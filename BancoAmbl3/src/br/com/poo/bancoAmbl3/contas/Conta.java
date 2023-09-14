@@ -2,7 +2,7 @@ package br.com.poo.bancoAmbl3.contas;
 
 //import java.util.Date;
 
-public class Conta {
+public abstract class Conta {
 	private static int contador = 1;
 
 	private String tipoConta;
@@ -55,25 +55,10 @@ public class Conta {
 	public void setTipoConta(String tipoConta) {
 		this.tipoConta = tipoConta;
 	}
-
-	public boolean depositar(double valor) {
-		if (valor <= 0) {
-			return false;
-		} else {
-			this.saldo += valor;
-			return true;
-
-		}
-	}
-
-	public boolean sacar(double valor) {
-		if (valor > this.saldo || valor <= 0) {
-			return false;
-		} else {
-			this.saldo -= valor;
-			return true;
-		}
-	}
+	
+    public abstract boolean depositar(double valor);
+    
+    public abstract boolean sacar(double valor);
 	
 	public void imprimirExtrato() {
 		

@@ -29,6 +29,27 @@ public class ContaPoupanca extends Conta {
 		this.taxa = taxa;
 	}
 	
+	@Override
+	public boolean depositar(double valor) {
+		if (valor <= 0) {
+			return false;
+		} else {
+			setSaldo(getSaldo() + valor);
+			return true;
+
+		}
+	}
+	
+	@Override
+	public boolean sacar(double valor) {
+		if (valor > getSaldo() || valor <= 0) {
+			return false;
+		} else {
+			setSaldo(getSaldo() - valor);
+			return true;
+		}
+	}
+	
 	public double relatorioRendimento(int dias, double valor) {
 		double meses = dias / 30.44;
 		this.rendimento = valor * taxa * meses;

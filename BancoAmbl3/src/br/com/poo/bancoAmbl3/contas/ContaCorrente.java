@@ -27,6 +27,28 @@ public class ContaCorrente extends Conta {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+	
+
+	@Override
+	public boolean depositar(double valor) {
+		if (valor <= 0.10) {
+			return false;
+		} else {
+			setSaldo(getSaldo() + valor - 0.10);
+			return true;
+
+		}
+	}
+	
+	@Override
+	public boolean sacar(double valor) {
+		if (valor > getSaldo() || valor <= 0) {
+			return false;
+		} else {
+			setSaldo(getSaldo() - valor - 0.10);
+			return true;
+		}
+	}
 
 	public boolean sacarEspecial(double valor) {
 		if (status && valor <= chequeEspecial) {
