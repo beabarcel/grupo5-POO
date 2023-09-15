@@ -100,7 +100,9 @@ public class JContaCorrente extends JFrame {
 		JButton btnNewButton_1 = new JButton("Sacar");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				JSaque jSaque = new JSaque(usuarioLogado);
+				jSaque.setLocationRelativeTo(jSaque);
+				jSaque.setVisible(true);
 			}
 		});
 		btnNewButton_1.setForeground(new Color(0, 51, 51));

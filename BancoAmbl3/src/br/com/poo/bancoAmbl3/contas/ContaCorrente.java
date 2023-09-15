@@ -66,6 +66,17 @@ public class ContaCorrente extends Conta {
 			return true;
 		}
 	}
+	
+	@Override
+	public boolean tranferir(Conta destino, double valor) {
+		boolean retirou = this.sacar(valor);
+		if(!retirou) {
+			return false;
+		} else {
+			destino.depositar(valor);
+			return true;
+		}
+	}
 
 	public boolean sacarEspecial(double valor) {
 		if (status && valor <= chequeEspecial) {
@@ -86,17 +97,6 @@ public class ContaCorrente extends Conta {
 			return true;
 		} else {
 			return false;
-		}
-	}
-	
-	@Override
-	public boolean tranferir(Conta destino, double valor) {
-		boolean retirou = this.sacar(valor);
-		if(!retirou) {
-			return false;
-		} else {
-			destino.depositar(valor);
-			return true;
 		}
 	}
 	

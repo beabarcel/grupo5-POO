@@ -96,7 +96,7 @@ public class JLogin extends JFrame {
 							}
 							 if(ContaPoupanca.buscarCP().get(cpf) != null) {
 								 verificaPoupanca = true;
-							 }
+							}
 							dispose();
 							JCliente jCliente = new JCliente(verificaCorrente, verificaPoupanca, usuarioLogado);
 							jCliente.setLocationRelativeTo(jCliente);
