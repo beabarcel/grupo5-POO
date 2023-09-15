@@ -15,6 +15,10 @@ public class ContaCorrente extends Conta {
 	public ContaCorrente() {
 		super();
 	}
+	
+	public ContaCorrente(String titular, String cpf) {
+		super(titular, cpf);
+	}
 
 	public ContaCorrente(double saldo, String titular) {
 		super(saldo, titular);

@@ -1,20 +1,25 @@
 package br.com.poo.bancoAmbl3.views;
 
-import java.awt.EventQueue; 
+import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.SoftBevelBorder;
 
 import br.com.poo.bancoAmbl3.contas.Conta;
+import br.com.poo.bancoAmbl3.contas.ContaCorrente;
+import br.com.poo.bancoAmbl3.contas.ContaPoupanca;
 import br.com.poo.bancoAmbl3.enums.Funcionario;
 import br.com.poo.bancoAmbl3.enums.TipoConta;
+import br.com.poo.bancoAmbl3.pessoas.Cliente;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.JButton;
@@ -84,10 +89,28 @@ public class JCadastro extends JFrame {
 		txtAmbl3.setBounds(449, 414, 45, 13);
 		txtAmbl3.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		
-		JButton botaoSalvarCadastro = new JButton("Cadastrar");
-		botaoSalvarCadastro.setBounds(90, 382, 94, 21);
-		botaoSalvarCadastro.setBackground(new Color(255, 255, 255));
-		contentPane.add(botaoSalvarCadastro);
+//		JButton botaoSalvarCadastro = new JButton("Cadastrar");
+//		botaoSalvarCadastro.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				String novaSenha;
+//				String novoCpf;
+//				String novoNome;
+//				String novoTelefone;
+//				String novoEmail;
+//				String tipo = tipo.getSelectedItem().toString();
+//				if(tipo.equalsIgnoreCase(TipoConta.CONTA_CORRENTE.getTipo())) {
+//					Cliente c = new Cliente(novoNome, novoCpf, novoEmail, novoTelefone, novaSenha);
+//					ContaCorrente cc = new ContaCorrente(novoCpf, novoNome);
+//				} else if (tipo.equalsIgnoreCase(TipoConta.CONTA_POUPANCA.getTipo())) {
+//					Cliente c = new Cliente(novoNome, novoCpf, novoEmail, novoTelefone, novaSenha);
+//					ContaPoupanca cc = new ContaPoupanca(novoCpf, novoNome);
+//				}
+//			}
+//
+//		});
+//		botaoSalvarCadastro.setBounds(90, 382, 94, 21);
+//		botaoSalvarCadastro.setBackground(new Color(255, 255, 255));
+//		contentPane.add(botaoSalvarCadastro);
 		
 		txtNovoNome = new JTextField();
 		txtNovoNome.setBounds(90, 79, 248, 21);
@@ -135,16 +158,55 @@ public class JCadastro extends JFrame {
 		for(TipoConta opcao : funcoesC) {
 			tipoConta.addItem(opcao.getTipo());
 		}
-		tipoConta.addActionListener(new ActionListener() {
+		
+		JButton botaoSalvarCadastro = new JButton("Cadastrar");
+		botaoSalvarCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String novaSenha = new String(txtNovaSenha.getPassword());
+				String novoCpf = txtNovoCpf.getText();
+				String novoNome = txtNovoNome.getText();
+				String novoTelefone = txtNovoTelefone.getText();
+				String novoEmail = txtNovoEmail.getText();
 				String tipo = tipoConta.getSelectedItem().toString();
+				if(novoNome.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Campo Nome vazio", "Aviso",
+							JOptionPane.WARNING_MESSAGE);
+				}
+				if(novaSenha.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Campo Senha Vazio", "Aviso",
+							JOptionPane.WARNING_MESSAGE);
+				}
+				if(novoCpf.isEmpty() ) {
+					JOptionPane.showMessageDialog(null, "Campo Cpf Vazio", "Aviso",
+							JOptionPane.WARNING_MESSAGE);
+				}
+				if(novoTelefone.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Campo Telefone Vazio", "Aviso",
+							JOptionPane.WARNING_MESSAGE);
+				}
+				if(novoEmail.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Campo Email Vazio", "Aviso",
+							JOptionPane.WARNING_MESSAGE);
+				}
+				
+				
+				
+				
 				if(tipo.equalsIgnoreCase(TipoConta.CONTA_CORRENTE.getTipo())) {
-					//
-				} else if(tipo.equalsIgnoreCase(TipoConta.CONTA_POUPANCA.getTipo())) {
-					//
+					Cliente c = new Cliente(novoNome, novoCpf, novoEmail, novoTelefone, novaSenha);
+					ContaCorrente cc = new ContaCorrente(novoCpf, novoNome);
+					System.out.println(c);
+				} else if (tipo.equalsIgnoreCase(TipoConta.CONTA_POUPANCA.getTipo())) {
+					Cliente c = new Cliente(novoNome, novoCpf, novoEmail, novoTelefone, novaSenha);
+					ContaPoupanca cp = new ContaPoupanca(novoCpf, novoNome);
+					System.out.println(cp);
 				}
 			}
+
 		});
+		botaoSalvarCadastro.setBounds(90, 382, 94, 21);
+		botaoSalvarCadastro.setBackground(new Color(255, 255, 255));
+		contentPane.add(botaoSalvarCadastro);
 		
 		tipoConta.setBounds(90, 342, 248, 22);
 		contentPane.add(tipoConta);

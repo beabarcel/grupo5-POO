@@ -18,6 +18,11 @@ public abstract class Conta {
 		this.numeroConta = Conta.contador;
 		Conta.contador++;
 	}
+	
+	public Conta(String titular, String cpfTitular) {
+		this.numeroConta = Conta.contador;
+		Conta.contador++;
+	}
 
 	public Conta(double saldo, String titular) {
 		this.numeroConta = Conta.contador;

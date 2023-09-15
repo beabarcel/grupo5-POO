@@ -16,6 +16,10 @@ public class ContaPoupanca extends Conta {
 	public ContaPoupanca() {
 		super();
 	}
+	
+	public ContaPoupanca(String titular, String cpf) {
+		super(titular, cpf);
+	}
 
 	public ContaPoupanca(double saldo, String titular) {
 		super(saldo, titular);
