@@ -14,6 +14,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.SoftBevelBorder;
+
+import br.com.poo.bancoAmbl3.pessoas.Cliente;
+
 import javax.swing.border.BevelBorder;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
@@ -25,7 +28,7 @@ public class JCliente extends JFrame {
 
 	private JPanel contentPane;
 
-	public JCliente(boolean cc, boolean cp) {
+	public JCliente(boolean cc, boolean cp, Cliente usuarioLogado) {
 		setTitle("Área do Cliente - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 366);
@@ -66,7 +69,7 @@ public class JCliente extends JFrame {
 			botaoContaCorrente.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					dispose();
-					JContaCorrente jContaCorrente = new JContaCorrente(cc, cp);
+					JContaCorrente jContaCorrente = new JContaCorrente(cc, cp, usuarioLogado);
 					jContaCorrente.setLocationRelativeTo(jContaCorrente);
 					jContaCorrente.setVisible(true);
 				}
@@ -79,7 +82,7 @@ public class JCliente extends JFrame {
 			botaoContaPoupanca.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					dispose();
-					JContaPoupanca jContaPoupanca = new JContaPoupanca(cc, cp);
+					JContaPoupanca jContaPoupanca = new JContaPoupanca(cc, cp, usuarioLogado);
 					jContaPoupanca.setLocationRelativeTo(jContaPoupanca);
 					jContaPoupanca.setVisible(true);
 				}

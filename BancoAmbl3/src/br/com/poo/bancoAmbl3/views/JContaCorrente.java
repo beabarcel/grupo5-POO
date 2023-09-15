@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,11 +15,14 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import br.com.poo.bancoAmbl3.contas.ContaCorrente;
+import br.com.poo.bancoAmbl3.pessoas.Cliente;
+
 public class JContaCorrente extends JFrame {
 
 	private JPanel contentPane;
 
-	public JContaCorrente(boolean corrente, boolean poupanca) {
+	public JContaCorrente(boolean corrente, boolean poupanca, Cliente usuarioLogado) {
 		setTitle("Conta Corrente - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 480);
@@ -27,6 +31,13 @@ public class JContaCorrente extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		ContaCorrente contaCorrente = null;
+		try {
+			contaCorrente = new ContaCorrente().buscarContaCorrentePorCpf(usuarioLogado.getCpf());
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}
 		
 		JPanel contentPane_1 = new JPanel();
 		contentPane_1.setLayout(null);
@@ -46,11 +57,11 @@ public class JContaCorrente extends JFrame {
 		panel.setBounds(0, 0, 434, 63);
 		contentPane_1.add(panel);
 		
-		JLabel lblOlPessoa = new JLabel("Olá Nome!");
+		JLabel lblOlPessoa = new JLabel("Olá " + contaCorrente.getTitular());
 		lblOlPessoa.setHorizontalAlignment(SwingConstants.LEFT);
 		lblOlPessoa.setForeground(new Color(0, 128, 128));
 		lblOlPessoa.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblOlPessoa.setBounds(10, 27, 121, 25);
+		lblOlPessoa.setBounds(10, 12, 286, 40);
 		panel.add(lblOlPessoa);
 		
 		JLabel lblNewLabel = new JLabel("Saldo");
@@ -59,10 +70,10 @@ public class JContaCorrente extends JFrame {
 		lblNewLabel.setBounds(10, 74, 46, 14);
 		contentPane_1.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("R$00,00");
+		JLabel lblNewLabel_1 = new JLabel("R$" + contaCorrente.getSaldo());
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 25));
-		lblNewLabel_1.setBounds(10, 102, 107, 30);
+		lblNewLabel_1.setBounds(10, 102, 248, 30);
 		contentPane_1.add(lblNewLabel_1);
 		
 		JButton btnNewButton = new JButton("Imprimir extrato");
@@ -151,7 +162,7 @@ public class JContaCorrente extends JFrame {
 		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				JCliente jCliente = new JCliente(corrente, poupanca);
+				JCliente jCliente = new JCliente(corrente, poupanca, usuarioLogado);
 				jCliente.setLocationRelativeTo(jCliente);
 				jCliente.setVisible(true);
 			}

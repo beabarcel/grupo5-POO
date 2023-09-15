@@ -20,6 +20,7 @@ import br.com.poo.bancoAmbl3.contas.ContaPoupanca;
 import br.com.poo.bancoAmbl3.enums.Agencias;
 import br.com.poo.bancoAmbl3.enums.Presidente;
 import br.com.poo.bancoAmbl3.enums.TipoConta;
+import br.com.poo.bancoAmbl3.io.LeituraEscrita;
 import br.com.poo.bancoAmbl3.pessoas.Cliente;
 
 import javax.swing.border.BevelBorder;
@@ -199,11 +200,14 @@ public class JCadastro extends JFrame {
 				if(tipo.equalsIgnoreCase(TipoConta.CONTA_CORRENTE.getTipo())) {
 					Cliente c = new Cliente(novoNome, novoCpf, novoEmail, novoTelefone, novaSenha);
 					ContaCorrente cc = new ContaCorrente(novoCpf, novoNome);
-					System.out.println(c);
+					LeituraEscrita.inserirRegistro(c.toString());
+					LeituraEscrita.inserirRegistro(cc.toString());
+					
 				} else if (tipo.equalsIgnoreCase(TipoConta.CONTA_POUPANCA.getTipo())) {
 					Cliente c = new Cliente(novoNome, novoCpf, novoEmail, novoTelefone, novaSenha);
 					ContaPoupanca cp = new ContaPoupanca(novoCpf, novoNome);
-					System.out.println(cp);
+					LeituraEscrita.inserirRegistro(c.toString());
+					LeituraEscrita.inserirRegistro(cp.toString());
 				}
 			}
 

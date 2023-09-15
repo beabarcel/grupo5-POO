@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 import br.com.poo.bancoAmbl3.enums.TipoRegistro;
 import br.com.poo.bancoAmbl3.pessoas.Funcionario;
 
@@ -41,17 +43,20 @@ public class LeituraEscrita {
 		return registros;
 	}
 
-	public static Map<String, String> escritor(String path) throws IOException {
-		String banco;
-		Scanner sc = new Scanner(System.in);
-		BufferedWriter buffWriter = new BufferedWriter(new FileWriter(PATH_BASICO + NOME + EXTENSAO, true));
-
-		System.out.println("Escreva algo: ");
-		banco = sc.nextLine();
-		buffWriter.append(banco + "\n");
-		sc.close();
-		buffWriter.close();
+	public static Map<String, String> inserirRegistro(String conteudo){
+		
+		String linha = "";
+	
+		try {
+			BufferedWriter buffWriter = new BufferedWriter(new FileWriter(PATH_BASICO + NOME + EXTENSAO, true));
+			buffWriter.append(conteudo);
+			buffWriter.close();
+		} catch (IOException e) {
+			JOptionPane.showInputDialog(null,"Erro ao salvar o cadastro");
+			e.printStackTrace();
+		}
 		return null;
+		
 	}
 
 }

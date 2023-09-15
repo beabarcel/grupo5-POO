@@ -16,7 +16,7 @@ import br.com.poo.bancoAmbl3.views.JLogin;
 public class SistemaInterno {
 
 	public static void main(String[] args) throws IOException {
-
+		
 		JLogin jl = new JLogin();
 		jl.setLocationRelativeTo(jl);
 		jl.setVisible(true);
@@ -28,11 +28,11 @@ public class SistemaInterno {
 		Map<String, ContaCorrente> CC = new ContaCorrente().buscarCC();
 		Map<String, ContaPoupanca> CP = new ContaPoupanca().buscarCP();
 
-	  System.out.println(clientes + "\n");
-	  System.out.println(gerentes + "\n");
-	  System.out.println(diretor +"\n");
-		System.out.println(CP);
-		System.out.println(CC);
+		//System.out.println(LeituraEscrita.PATH_BASICO + "\n");
+//		System.out.println(gerentes + "\n");
+//		System.out.println(diretor + "\n");
+//		System.out.println(CP);
+//		System.out.println(CC);
 
 	}
 }

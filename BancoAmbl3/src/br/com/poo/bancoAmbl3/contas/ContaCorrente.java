@@ -7,6 +7,7 @@ import java.util.Map;
 import br.com.poo.bancoAmbl3.enums.TipoRegistro;
 import br.com.poo.bancoAmbl3.io.LeituraEscrita;
 //import br.com.poo.bancoAmbl3.pessoas.Cliente;
+import br.com.poo.bancoAmbl3.pessoas.Cliente;
 
 public class ContaCorrente extends Conta {
 	private boolean status;
@@ -105,10 +106,8 @@ public class ContaCorrente extends Conta {
 
 	@Override
 	public String toString() {
-		return "\nContaCorrente " + " CPF do Titular= " + getCpfTitular()
-				+ "Titular= " + getTitular() + ", Agencia()=" + getAgencia() + ", Saldo= " + getSaldo()
-				+ ", getAgencia()=" + getAgencia() + "Numero da Conta"
-				+ getNumeroConta() + "]";
+		return "\nCONTAPOUPANCA," + super.getCpfTitular() + "," +  super.getTitular()+ "," +super.getAgencia() + "," +  super.getSaldo() + "," + super.getNumeroConta();
+
 	}
 
 	public static Map<String, ContaCorrente> buscarCC() throws IOException {
@@ -124,5 +123,10 @@ public class ContaCorrente extends Conta {
 
 		return CC;
 
+	}
+	
+	public ContaCorrente buscarContaCorrentePorCpf(String cpf) throws IOException {
+		Map<String, ContaCorrente> contaCorrente = buscarCC();
+		return contaCorrente.get(cpf);
 	}
 }

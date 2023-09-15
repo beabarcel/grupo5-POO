@@ -83,13 +83,10 @@ public class ContaPoupanca extends Conta {
 		this.rendimento = valor * taxa * meses;
 		return rendimento;
 	}
-	
+	 
 	@Override
 	public String toString() {
-		return "\nContaPoupanca " + " CPF do Titular= " + getCpfTitular()
-				+ "Titular= " + getTitular() + ", Agencia()=" + getAgencia() + ", Saldo= " + getSaldo()
-				+ ", getAgencia()=" + getAgencia() + "Numero da Conta"
-				+ getNumeroConta() + "]";
+		return "\nCONTAPOUPANCA," + super.getCpfTitular() + "," +  super.getAgencia() + "," +  super.getSaldo() + "," + super.getNumeroConta();
 	}
 
 	public static Map<String, ContaPoupanca> buscarCP() throws IOException {
@@ -105,6 +102,11 @@ public class ContaPoupanca extends Conta {
 
 		return CP;
 
+	}
+	
+	public ContaPoupanca buscarContaPoupancaPorCpf(String cpf) throws IOException {
+		Map<String, ContaPoupanca> contaPoupanca = buscarCP();
+		return contaPoupanca.get(cpf);
 	}
 
 	

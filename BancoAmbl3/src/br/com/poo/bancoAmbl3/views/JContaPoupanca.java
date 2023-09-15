@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 import javax.swing.JButton;
@@ -17,7 +18,9 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import br.com.poo.bancoAmbl3.LigacaoViews.Autenticacao;
+import br.com.poo.bancoAmbl3.contas.ContaCorrente;
 import br.com.poo.bancoAmbl3.contas.ContaPoupanca;
+import br.com.poo.bancoAmbl3.pessoas.Cliente;
 
 public class JContaPoupanca extends JFrame {
 
@@ -26,7 +29,7 @@ public class JContaPoupanca extends JFrame {
 	private JTextField textDias;
 	DecimalFormat df = new DecimalFormat("#,###.00");
 
-	public JContaPoupanca(boolean corrente, boolean poupanca) {
+	public JContaPoupanca(boolean corrente, boolean poupanca, Cliente usuarioLogado) {
 		setTitle("Conta Poupança - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 480);
@@ -37,13 +40,20 @@ public class JContaPoupanca extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		ContaPoupanca contaPoupanca = null;
+		try {
+			contaPoupanca = new ContaPoupanca().buscarContaPoupancaPorCpf(usuarioLogado.getCpf());
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}
+		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 434, 63);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		Autenticacao a = new Autenticacao();
-		JLabel lblOlPessoa = new JLabel("Olá " + a.nome() + "!" );
+		JLabel lblOlPessoa = new JLabel("Olá " + contaPoupanca.getTitular() + "!" );
 		lblOlPessoa.setBounds(10, 27, 217, 25);
 		panel.add(lblOlPessoa);
 		lblOlPessoa.setFont(new Font("Dialog", Font.PLAIN, 20));
@@ -56,7 +66,7 @@ public class JContaPoupanca extends JFrame {
 		lblNewLabel.setBounds(10, 74, 46, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel textSaldo = new JLabel("R$" + a.saldo());
+		JLabel textSaldo = new JLabel("R$" + contaPoupanca.getSaldo());
 		textSaldo.setFont(new Font("Dialog", Font.BOLD, 25));
 		textSaldo.setForeground(new Color(255, 255, 255));
 		textSaldo.setBounds(10, 102, 269, 30);
@@ -148,7 +158,7 @@ public class JContaPoupanca extends JFrame {
 		btnNewButton_1_1_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
                 dispose();
-                JCliente jCliente = new JCliente(corrente, poupanca);
+                JCliente jCliente = new JCliente(corrente, poupanca, usuarioLogado);
                 jCliente.setLocationRelativeTo(jCliente);
                 jCliente.setVisible(true);
             }

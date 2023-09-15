@@ -23,6 +23,7 @@ import javax.swing.border.SoftBevelBorder;
 import br.com.poo.bancoAmbl3.LigacaoViews.Autenticacao;
 import br.com.poo.bancoAmbl3.contas.ContaCorrente;
 import br.com.poo.bancoAmbl3.contas.ContaPoupanca;
+import br.com.poo.bancoAmbl3.pessoas.Cliente;
 
 import javax.swing.border.BevelBorder;
 
@@ -82,13 +83,14 @@ public class JLogin extends JFrame {
 				String cpf = txtCpf.getText();
 				String senha = new String(txtSenha.getPassword());
 				Autenticacao autenticacao = new Autenticacao();
-				boolean autenticou = autenticacao.autenticar(cpf, senha);
+				boolean autenticou = autenticacao.autenticar(cpf, senha);				
 				System.out.println("TIPO PESSOA: " + autenticacao.getTipoPessoa());
 				boolean verificaCorrente = false;
 				boolean verificaPoupanca = false;
 				if (autenticou) {
 					if (autenticacao.getTipoPessoa().equals("CLIENTE")) {
 						try {
+							Cliente usuarioLogado = new Cliente().buscarClientePorCpf(cpf);
 							if (ContaCorrente.buscarCC().get(cpf) != null) {
 								verificaCorrente = true;
 							}
@@ -96,7 +98,7 @@ public class JLogin extends JFrame {
 								 verificaPoupanca = true;
 							 }
 							dispose();
-							JCliente jCliente = new JCliente(verificaCorrente, verificaPoupanca);
+							JCliente jCliente = new JCliente(verificaCorrente, verificaPoupanca, usuarioLogado);
 							jCliente.setLocationRelativeTo(jCliente);
 							jCliente.setVisible(true);
 						} catch (IOException e1) {

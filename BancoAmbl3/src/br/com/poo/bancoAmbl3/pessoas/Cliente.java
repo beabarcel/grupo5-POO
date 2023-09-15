@@ -76,10 +76,14 @@ public class Cliente {
 		return clientes;
 
 	}
+	
+	public Cliente buscarClientePorCpf(String cpf) throws IOException {
+		Map<String, Cliente> clientes = buscarClientes();
+		return clientes.get(cpf);
+	}
 
 	@Override
 	public String toString() {
-		return "Cliente [\nnome=" + nome + ", cpf=" + cpf + ", email= " + email +  ", Telefone= " + telefone + ", senha="
-				+ senha + "]";
+		return "CLIENTE," + nome + "," +  cpf + "," + "," + email + "," + telefone + "," + senha;
 	}
 }
