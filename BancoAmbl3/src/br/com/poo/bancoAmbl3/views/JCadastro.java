@@ -29,8 +29,10 @@ import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.awt.event.ActionEvent;
 import java.awt.Rectangle;
 
@@ -164,6 +166,15 @@ public class JCadastro extends JFrame {
 			tipoConta.addItem(opcao.getTipo());
 		}
 		
+		JComboBox<String> tipoConta_1 = new JComboBox<String>();
+		List<Agencias> agencias = Arrays.asList(Agencias.values());
+		tipoConta.addItem("Selecione uma das opções:");
+		for(Agencias opcao : agencias) {
+			tipoConta_1.addItem(opcao.getTipo());
+		}
+		tipoConta_1.setBounds(218, 342, 120, 22);
+		contentPane.add(tipoConta_1);
+		
 		JButton botaoSalvarCadastro = new JButton("Cadastrar");
 		botaoSalvarCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -172,6 +183,7 @@ public class JCadastro extends JFrame {
 				String novoNome = txtNovoNome.getText();
 				String novoTelefone = txtNovoTelefone.getText();
 				String novoEmail = txtNovoEmail.getText();
+				String novaAgencia = tipoConta_1.getSelectedItem().toString();
 				String tipo = tipoConta.getSelectedItem().toString();
 				if(novoNome.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Campo Nome vazio", "Aviso",
@@ -189,25 +201,33 @@ public class JCadastro extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo Telefone Vazio", "Aviso",
 							JOptionPane.WARNING_MESSAGE);
 				}
+				
 				if(novoEmail.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Campo Email Vazio", "Aviso",
 							JOptionPane.WARNING_MESSAGE);
 				}
 				
-				
-				
-				
 				if(tipo.equalsIgnoreCase(TipoConta.CONTA_CORRENTE.getTipo())) {
 					Cliente c = new Cliente(novoNome, novoCpf, novoEmail, novoTelefone, novaSenha);
-					ContaCorrente cc = new ContaCorrente(novoCpf, novoNome);
+					ContaCorrente cc = new ContaCorrente(novoCpf, novoNome, novaAgencia);
 					LeituraEscrita.inserirRegistro(c.toString());
 					LeituraEscrita.inserirRegistro(cc.toString());
+					try {
+						Map<String, ContaCorrente> CC = new ContaCorrente().buscarCC();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 					
 				} else if (tipo.equalsIgnoreCase(TipoConta.CONTA_POUPANCA.getTipo())) {
 					Cliente c = new Cliente(novoNome, novoCpf, novoEmail, novoTelefone, novaSenha);
-					ContaPoupanca cp = new ContaPoupanca(novoCpf, novoNome);
+					ContaPoupanca cp = new ContaPoupanca(novoCpf, novoNome, novaAgencia);
 					LeituraEscrita.inserirRegistro(c.toString());
 					LeituraEscrita.inserirRegistro(cp.toString());
+					try {
+						Map<String, ContaPoupanca> CP = new ContaPoupanca().buscarCP();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}
 			}
 
@@ -240,15 +260,6 @@ public class JCadastro extends JFrame {
 		lblAgncia.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblAgncia.setBounds(219, 318, 72, 13);
 		contentPane.add(lblAgncia);
-		
-		JComboBox<String> tipoConta_1 = new JComboBox<String>();
-		List<Agencias> agencias = Arrays.asList(Agencias.values());
-		tipoConta.addItem("Selecione uma das opções:");
-		for(Agencias opcao : agencias) {
-			tipoConta_1.addItem(opcao.getTipo());
-		}
-		tipoConta_1.setBounds(218, 342, 120, 22);
-		contentPane.add(tipoConta_1);
 		
 	}
 }

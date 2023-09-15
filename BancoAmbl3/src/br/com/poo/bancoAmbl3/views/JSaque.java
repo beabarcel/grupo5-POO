@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 
 import br.com.poo.bancoAmbl3.contas.Conta;
 import br.com.poo.bancoAmbl3.contas.ContaCorrente;
+import br.com.poo.bancoAmbl3.contas.ContaPoupanca;
 import br.com.poo.bancoAmbl3.pessoas.Cliente;
 
 import java.awt.Color;
@@ -25,14 +26,14 @@ public class JSaque extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	
-	public JSaque(Cliente usuario) {
+	public JSaque(boolean cc, boolean cp, Cliente usuarioLogado, ContaCorrente contaCorrente, ContaPoupanca contaPoupanca) {
 		
-		Conta conta = null;
-		try {
-			conta = new ContaCorrente().buscarContaCorrentePorCpf(usuario.getCpf());
-		} catch (IOException e) {			
-			e.printStackTrace();
-		}
+//		Conta conta = null;
+//		try {
+//			conta = new ContaCorrente().buscarContaCorrentePorCpf(usuario.getCpf());
+//		} catch (IOException e) {			
+//			e.printStackTrace();
+//		}
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 218);
@@ -59,8 +60,12 @@ public class JSaque extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Double valor = Double.parseDouble(textField.getText());
-				
-				}
+				contaCorrente.sacar(valor);
+				dispose();
+				JContaCorrente jContaCorrente = new JContaCorrente(cc, cp, usuarioLogado, contaCorrente, contaPoupanca);
+				jContaCorrente.setLocationRelativeTo(jContaCorrente);
+				jContaCorrente.setVisible(true);
+			}
 		});
 		btnNewButton.setBounds(174, 133, 89, 23);
 		contentPane.add(btnNewButton);

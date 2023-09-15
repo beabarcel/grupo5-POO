@@ -5,6 +5,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import br.com.poo.bancoAmbl3.contas.ContaCorrente;
+import br.com.poo.bancoAmbl3.contas.ContaPoupanca;
+import br.com.poo.bancoAmbl3.pessoas.Cliente;
+
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -20,7 +25,7 @@ public class JDeposito extends JFrame {
 	private JTextField textValorDeposito;
 	private JButton btnVoltar;
 
-	public JDeposito() {
+	public JDeposito(boolean cc, boolean cp, Cliente usuarioLogado, ContaCorrente contaCorrente, ContaPoupanca contaPoupanca) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 218);
 		contentPane = new JPanel();
@@ -46,6 +51,11 @@ public class JDeposito extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Double valor = Double.parseDouble(textValorDeposito.getText());
+				contaCorrente.depositar(valor);
+				dispose();
+				JContaCorrente jContaCorrente = new JContaCorrente(cc, cp, usuarioLogado, contaCorrente, contaPoupanca);
+				jContaCorrente.setLocationRelativeTo(jContaCorrente);
+				jContaCorrente.setVisible(true);
 				}
 		});
 		btnNewButton.setBounds(174, 133, 89, 23);

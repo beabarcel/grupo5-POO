@@ -15,6 +15,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.SoftBevelBorder;
 
+import br.com.poo.bancoAmbl3.contas.ContaCorrente;
+import br.com.poo.bancoAmbl3.contas.ContaPoupanca;
 import br.com.poo.bancoAmbl3.pessoas.Cliente;
 
 import javax.swing.border.BevelBorder;
@@ -28,7 +30,7 @@ public class JCliente extends JFrame {
 
 	private JPanel contentPane;
 
-	public JCliente(boolean cc, boolean cp, Cliente usuarioLogado) {
+	public JCliente(boolean cc, boolean cp, Cliente usuarioLogado, ContaCorrente contaCorrente, ContaPoupanca contaPoupanca) {
 		setTitle("Área do Cliente - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 366);
@@ -64,12 +66,24 @@ public class JCliente extends JFrame {
 		labelBemVindo2.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		labelBemVindo2.setBounds(46, 143, 343, 13);
 		contentPane.add(labelBemVindo2);
+		
+		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				JLogin jLogin = new JLogin();
+				jLogin.setLocationRelativeTo(jLogin);
+				jLogin.setVisible(true);
+			}
+		});
+		btnSair.setBounds(309, 377, 89, 23);
+		contentPane.add(btnSair);
 		if (cc) {
 			JButton botaoContaCorrente = new JButton("Conta Corrente");
 			botaoContaCorrente.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					dispose();
-					JContaCorrente jContaCorrente = new JContaCorrente(cc, cp, usuarioLogado);
+					JContaCorrente jContaCorrente = new JContaCorrente(cc, cp, usuarioLogado, contaCorrente, contaPoupanca);
 					jContaCorrente.setLocationRelativeTo(jContaCorrente);
 					jContaCorrente.setVisible(true);
 				}
@@ -82,7 +96,7 @@ public class JCliente extends JFrame {
 			botaoContaPoupanca.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					dispose();
-					JContaPoupanca jContaPoupanca = new JContaPoupanca(cc, cp, usuarioLogado);
+					JContaPoupanca jContaPoupanca = new JContaPoupanca(cc, cp, usuarioLogado, contaCorrente, contaPoupanca);
 					jContaPoupanca.setLocationRelativeTo(jContaPoupanca);
 					jContaPoupanca.setVisible(true);
 				}

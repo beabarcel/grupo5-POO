@@ -30,6 +30,10 @@ public class ContaPoupanca extends Conta {
 		super(cpfTitular, titular, agencia, saldo, numeroConta);
 	}
 
+	public ContaPoupanca(String cpfTitular, String titular, String agencia) {
+		super(cpfTitular, titular, agencia);
+	}
+
 	public double getRendimento() {
 		return rendimento;
 	}
@@ -58,7 +62,7 @@ public class ContaPoupanca extends Conta {
 	}
 	
 	@Override
-	public boolean tranferir(Conta destino, double valor) {
+	public boolean transferir(Conta destino, double valor) {
 		boolean retirou = this.sacar(valor);
 		if(!retirou) {
 			return false;

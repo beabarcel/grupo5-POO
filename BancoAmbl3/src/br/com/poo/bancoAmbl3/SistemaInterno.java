@@ -31,7 +31,7 @@ public class SistemaInterno {
 		//System.out.println(LeituraEscrita.PATH_BASICO + "\n");
 //		System.out.println(gerentes + "\n");
 //		System.out.println(diretor + "\n");
-//		System.out.println(CP);
+		System.out.println(CP);
 //		System.out.println(CC);
 
 	}

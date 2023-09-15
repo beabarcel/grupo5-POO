@@ -87,18 +87,22 @@ public class JLogin extends JFrame {
 				System.out.println("TIPO PESSOA: " + autenticacao.getTipoPessoa());
 				boolean verificaCorrente = false;
 				boolean verificaPoupanca = false;
+				ContaCorrente contaCorrente = null;
+				ContaPoupanca contaPoupanca = null;
 				if (autenticou) {
 					if (autenticacao.getTipoPessoa().equals("CLIENTE")) {
 						try {
 							Cliente usuarioLogado = new Cliente().buscarClientePorCpf(cpf);
 							if (ContaCorrente.buscarCC().get(cpf) != null) {
+								contaCorrente = ContaCorrente.buscarCC().get(cpf);
 								verificaCorrente = true;
 							}
 							 if(ContaPoupanca.buscarCP().get(cpf) != null) {
-								 verificaPoupanca = true;
+								contaPoupanca = ContaPoupanca.buscarCP().get(cpf);
+								verificaPoupanca = true;
 							}
 							dispose();
-							JCliente jCliente = new JCliente(verificaCorrente, verificaPoupanca, usuarioLogado);
+							JCliente jCliente = new JCliente(verificaCorrente, verificaPoupanca, usuarioLogado, contaCorrente, contaPoupanca);
 							jCliente.setLocationRelativeTo(jCliente);
 							jCliente.setVisible(true);
 						} catch (IOException e1) {

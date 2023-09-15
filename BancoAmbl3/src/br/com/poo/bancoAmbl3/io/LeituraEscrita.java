@@ -17,9 +17,9 @@ import br.com.poo.bancoAmbl3.pessoas.Funcionario;
 
 public class LeituraEscrita {
 
-	static final String PATH_BASICO = "./temp/";
+	public static final String PATH_BASICO = "./temp/";
 	static final String NOME = "banco";
-	static final String EXTENSAO = ".txt";
+	public static final String EXTENSAO = ".txt";
 
 	public static Map<String, String> leitor(TipoRegistro tipoRegistro) throws IOException {
 
@@ -58,5 +58,4 @@ public class LeituraEscrita {
 		return null;
 		
 	}
-
 }

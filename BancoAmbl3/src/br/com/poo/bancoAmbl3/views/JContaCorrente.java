@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,13 +17,15 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import br.com.poo.bancoAmbl3.contas.ContaCorrente;
+import br.com.poo.bancoAmbl3.contas.ContaPoupanca;
 import br.com.poo.bancoAmbl3.pessoas.Cliente;
 
 public class JContaCorrente extends JFrame {
 
 	private JPanel contentPane;
+	private DecimalFormat df = new DecimalFormat("#,###.00");
 
-	public JContaCorrente(boolean corrente, boolean poupanca, Cliente usuarioLogado) {
+	public JContaCorrente(boolean corrente, boolean poupanca, Cliente usuarioLogado, ContaCorrente contaCorrente, ContaPoupanca contaPoupanca) {
 		setTitle("Conta Corrente - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 480);
@@ -32,12 +35,12 @@ public class JContaCorrente extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		ContaCorrente contaCorrente = null;
-		try {
-			contaCorrente = new ContaCorrente().buscarContaCorrentePorCpf(usuarioLogado.getCpf());
-		} catch (IOException e) {			
-			e.printStackTrace();
-		}
+//		ContaCorrente contaCorrente = null;
+//		try {
+//			contaCorrente = new ContaCorrente().buscarContaCorrentePorCpf(usuarioLogado.getCpf());
+//		} catch (IOException e) {			
+//			e.printStackTrace();
+//		}
 		
 		JPanel contentPane_1 = new JPanel();
 		contentPane_1.setLayout(null);
@@ -70,7 +73,7 @@ public class JContaCorrente extends JFrame {
 		lblNewLabel.setBounds(10, 74, 46, 14);
 		contentPane_1.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("R$" + contaCorrente.getSaldo());
+		JLabel lblNewLabel_1 = new JLabel("R$" + df.format(contaCorrente.getSaldo()));
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 25));
 		lblNewLabel_1.setBounds(10, 102, 248, 30);
@@ -79,7 +82,6 @@ public class JContaCorrente extends JFrame {
 		JButton btnNewButton = new JButton("Imprimir extrato");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//
 			}
 		});
 		btnNewButton.setForeground(new Color(0, 51, 51));
@@ -100,7 +102,8 @@ public class JContaCorrente extends JFrame {
 		JButton btnNewButton_1 = new JButton("Sacar");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JSaque jSaque = new JSaque(usuarioLogado);
+				dispose();
+				JSaque jSaque = new JSaque(corrente, poupanca, usuarioLogado, contaCorrente, contaPoupanca);
 				jSaque.setLocationRelativeTo(jSaque);
 				jSaque.setVisible(true);
 			}
@@ -108,21 +111,37 @@ public class JContaCorrente extends JFrame {
 		btnNewButton_1.setForeground(new Color(0, 51, 51));
 		btnNewButton_1.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnNewButton_1.setBackground(UIManager.getColor("Button.background"));
-		btnNewButton_1.setBounds(40, 169, 89, 23);
+		btnNewButton_1.setBounds(35, 169, 89, 23);
 		contentPane_1.add(btnNewButton_1);
 		
 		JButton btnNewButton_1_1 = new JButton("Transferir");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				JTransferencia jTransferencia = new JTransferencia(corrente, poupanca, usuarioLogado, contaCorrente, contaPoupanca);
+				jTransferencia.setLocationRelativeTo(jTransferencia);
+				jTransferencia.setVisible(true);
+			}
+		});
 		btnNewButton_1_1.setForeground(new Color(0, 51, 51));
 		btnNewButton_1_1.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnNewButton_1_1.setBackground(UIManager.getColor("Button.background"));
-		btnNewButton_1_1.setBounds(169, 169, 89, 23);
+		btnNewButton_1_1.setBounds(159, 169, 107, 23);
 		contentPane_1.add(btnNewButton_1_1);
 		
 		JButton btnNewButton_1_1_1 = new JButton("Depositar");
+		btnNewButton_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				JDeposito jDeposito = new JDeposito(corrente, poupanca, usuarioLogado, contaCorrente, contaPoupanca);
+				jDeposito.setLocationRelativeTo(jDeposito);
+				jDeposito.setVisible(true);
+			}
+		});
 		btnNewButton_1_1_1.setForeground(new Color(0, 51, 51));
 		btnNewButton_1_1_1.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnNewButton_1_1_1.setBackground(UIManager.getColor("Button.background"));
-		btnNewButton_1_1_1.setBounds(298, 169, 89, 23);
+		btnNewButton_1_1_1.setBounds(301, 169, 89, 23);
 		contentPane_1.add(btnNewButton_1_1_1);
 		
 		JPanel panel_1_1 = new JPanel();
@@ -164,7 +183,7 @@ public class JContaCorrente extends JFrame {
 		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				JCliente jCliente = new JCliente(corrente, poupanca, usuarioLogado);
+				JCliente jCliente = new JCliente(corrente, poupanca, usuarioLogado, contaCorrente, contaPoupanca);
 				jCliente.setLocationRelativeTo(jCliente);
 				jCliente.setVisible(true);
 			}

@@ -1,13 +1,13 @@
 package br.com.poo.bancoAmbl3.contas;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 import br.com.poo.bancoAmbl3.enums.TipoRegistro;
 import br.com.poo.bancoAmbl3.io.LeituraEscrita;
-//import br.com.poo.bancoAmbl3.pessoas.Cliente;
-import br.com.poo.bancoAmbl3.pessoas.Cliente;
 
 public class ContaCorrente extends Conta {
 	private boolean status;
@@ -30,6 +30,10 @@ public class ContaCorrente extends Conta {
 		super(cpfTitular, titular, agencia, saldo, numeroConta);
 	}
 
+	public ContaCorrente(String cpfTitular, String titular, String agencia) {
+		super(cpfTitular, titular, agencia);
+	}
+	
 	public boolean getStatus() {
 		return status;
 	}
@@ -52,6 +56,11 @@ public class ContaCorrente extends Conta {
 			return false;
 		} else {
 			setSaldo(getSaldo() + valor - 0.10);
+			try {
+				comprovanteDeposito(valor);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			return true;
 
 		}
@@ -63,17 +72,64 @@ public class ContaCorrente extends Conta {
 			return false;
 		} else {
 			setSaldo(getSaldo() - valor - 0.10);
+			try {
+				comprovanteSaque(valor);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			return true;
 		}
 	}
+
+	public void comprovanteSaque(Double valor) throws IOException {
+        String path = getTitular() + "_" + getCpfTitular();
+        BufferedWriter buffWrite = new BufferedWriter(new FileWriter(LeituraEscrita.PATH_BASICO + path + LeituraEscrita.EXTENSAO, true));
+
+        buffWrite.append("** SAQUE **\n");
+        buffWrite.append("CPF: " + getCpfTitular() + "\n");
+        buffWrite.append("Conta: " + getNumeroConta() + "\n");
+        buffWrite.append("Valor do Saque: " + valor + "\n");
+        buffWrite.append("** FIM SAQUE **\n");
+        buffWrite.close();
+    }
+	
+	public void comprovanteDeposito(Double valor) throws IOException {
+        String path = getTitular() + "_" + getCpfTitular();
+        BufferedWriter buffWrite = new BufferedWriter(new FileWriter(LeituraEscrita.PATH_BASICO + path + LeituraEscrita.EXTENSAO, true));
+
+        buffWrite.append("** DEPÓSITO **\n");
+        buffWrite.append("CPF: " + getCpfTitular() + "\n");
+        buffWrite.append("Conta: " + getNumeroConta() + "\n");
+        buffWrite.append("Valor do Depósito: " + valor + "\n");
+        buffWrite.append("** FIM DEPÓSITO **\n");
+        buffWrite.close();
+    }
+	
+	public void comprovanteTransferencia(Conta destino, Double valor) throws IOException {
+        String path = getTitular() + "_" + getCpfTitular();
+        BufferedWriter buffWrite = new BufferedWriter(new FileWriter(LeituraEscrita.PATH_BASICO + path + LeituraEscrita.EXTENSAO, true));
+
+        buffWrite.append("** TRANSFERÊNCIA **\n");
+        buffWrite.append("CPF: " + getCpfTitular() + "\n");
+        buffWrite.append("Conta Remetente: " + getNumeroConta() + "\n");
+        buffWrite.append("Conta Destinatário: " + destino.getNumeroConta() + "\n");
+        buffWrite.append("Valor da transferência: " + valor + "\n");
+        buffWrite.append("** FIM TRANSFERÊNCIA **\n");
+        buffWrite.close();
+    }
 	
 	@Override
-	public boolean tranferir(Conta destino, double valor) {
+	public boolean transferir(Conta destino, double valor) {
 		boolean retirou = this.sacar(valor);
 		if(!retirou) {
 			return false;
 		} else {
 			destino.depositar(valor);
+			try {
+				comprovanteTransferencia(destino, valor);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			return true;
 		}
 	}
@@ -106,7 +162,7 @@ public class ContaCorrente extends Conta {
 
 	@Override
 	public String toString() {
-		return "\nCONTAPOUPANCA," + super.getCpfTitular() + "," +  super.getTitular()+ "," +super.getAgencia() + "," +  super.getSaldo() + "," + super.getNumeroConta();
+		return "\nCONTACORRENTE," + super.getCpfTitular() + "," +  super.getTitular()+ "," +super.getAgencia() + "," +  super.getSaldo() + "," + super.getNumeroConta();
 
 	}
 

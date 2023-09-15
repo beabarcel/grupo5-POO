@@ -30,6 +30,7 @@ public abstract class Conta {
 		this.titular = titular;
 		Conta.contador++;
 	}
+	
 	public Conta(String cpfTitular, String titular, String agencia, double saldo, int numeroConta) {
 		super();
 		this.cpfTitular = cpfTitular;
@@ -39,9 +40,16 @@ public abstract class Conta {
 		this.numeroConta = numeroConta;
 	}
 	
+	public Conta(String cpfTitular, String titular, String agencia) {
+		this.cpfTitular = cpfTitular;
+		this.titular = titular;
+		this.agencia = agencia;
+	}
+	
 	public double getSaldo() {
 		return saldo;
 	}
+	
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
@@ -66,7 +74,7 @@ public abstract class Conta {
     
     public abstract boolean sacar(double valor);
     
-    public abstract boolean tranferir(Conta destino, double valor);
+    public abstract boolean transferir(Conta destino, double valor);
 		
 	
 	public void imprimirExtrato() {

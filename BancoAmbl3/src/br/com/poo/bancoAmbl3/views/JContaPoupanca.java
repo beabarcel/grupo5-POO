@@ -29,7 +29,7 @@ public class JContaPoupanca extends JFrame {
 	private JTextField textDias;
 	DecimalFormat df = new DecimalFormat("#,###.00");
 
-	public JContaPoupanca(boolean corrente, boolean poupanca, Cliente usuarioLogado) {
+	public JContaPoupanca(boolean corrente, boolean poupanca, Cliente usuarioLogado, ContaCorrente contaCorrente, ContaPoupanca contaPoupanca) {
 		setTitle("Conta Poupança - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 480);
@@ -40,12 +40,12 @@ public class JContaPoupanca extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		ContaPoupanca contaPoupanca = null;
-		try {
-			contaPoupanca = new ContaPoupanca().buscarContaPoupancaPorCpf(usuarioLogado.getCpf());
-		} catch (IOException e) {			
-			e.printStackTrace();
-		}
+//		ContaPoupanca contaPoupanca = null;
+//		try {
+//			contaPoupanca = new ContaPoupanca().buscarContaPoupancaPorCpf(usuarioLogado.getCpf());
+//		} catch (IOException e) {			
+//			e.printStackTrace();
+//		}
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 434, 63);
@@ -158,7 +158,7 @@ public class JContaPoupanca extends JFrame {
 		btnNewButton_1_1_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
                 dispose();
-                JCliente jCliente = new JCliente(corrente, poupanca, usuarioLogado);
+                JCliente jCliente = new JCliente(corrente, poupanca, usuarioLogado, contaCorrente, contaPoupanca);
                 jCliente.setLocationRelativeTo(jCliente);
                 jCliente.setVisible(true);
             }
