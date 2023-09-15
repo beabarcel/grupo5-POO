@@ -1,6 +1,6 @@
 package br.com.poo.bancoAmbl3.enums;
 
-public enum Gerente {
+public enum GerenteEnum {
 	CADASTRAR_CONTA("Cadastrar Conta", 1),
 	RELATORIO_CONTAS_AGENCIA("Relatório total de contas por agencia", 2),
 	RELATORIO_CONTAS("Relatório das contas", 3);
@@ -8,7 +8,7 @@ public enum Gerente {
 	private String tipo;
 	private int id;
 	
-	Gerente(String tipo, int id){
+	GerenteEnum(String tipo, int id){
 		this.tipo = tipo;
 		this.id = id;
 	}

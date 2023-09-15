@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
+import br.com.poo.bancoAmbl3.enums.StatusAnalise;
 import br.com.poo.bancoAmbl3.enums.TipoRegistro;
 import br.com.poo.bancoAmbl3.pessoas.Funcionario;
 
@@ -57,5 +58,9 @@ public class LeituraEscrita {
 		}
 		return null;
 		
+	}
+
+	public static Map<String, String> leitor(StatusAnalise saldo) {
+		return null;
 	}
 }

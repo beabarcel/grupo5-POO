@@ -18,7 +18,7 @@ import br.com.poo.bancoAmbl3.contas.Conta;
 import br.com.poo.bancoAmbl3.contas.ContaCorrente;
 import br.com.poo.bancoAmbl3.contas.ContaPoupanca;
 import br.com.poo.bancoAmbl3.enums.Agencias;
-import br.com.poo.bancoAmbl3.enums.Presidente;
+import br.com.poo.bancoAmbl3.enums.PresidenteEnum;
 import br.com.poo.bancoAmbl3.enums.TipoConta;
 import br.com.poo.bancoAmbl3.io.LeituraEscrita;
 import br.com.poo.bancoAmbl3.pessoas.Cliente;

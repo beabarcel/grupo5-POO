@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -25,7 +26,7 @@ public class JContaCorrente extends JFrame {
 	private JPanel contentPane;
 	private DecimalFormat df = new DecimalFormat("#,###.00");
 
-	public JContaCorrente(boolean corrente, boolean poupanca, Cliente usuarioLogado, ContaCorrente contaCorrente, ContaPoupanca contaPoupanca) {
+	public JContaCorrente(String contaAtual, boolean corrente, boolean poupanca, Cliente usuarioLogado, ContaCorrente contaCorrente, ContaPoupanca contaPoupanca) {
 		setTitle("Conta Corrente - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 480);
@@ -103,7 +104,7 @@ public class JContaCorrente extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				JSaque jSaque = new JSaque(corrente, poupanca, usuarioLogado, contaCorrente, contaPoupanca);
+				JSaque jSaque = new JSaque(contaAtual, corrente, poupanca, usuarioLogado, contaCorrente, contaPoupanca);
 				jSaque.setLocationRelativeTo(jSaque);
 				jSaque.setVisible(true);
 			}
@@ -118,7 +119,7 @@ public class JContaCorrente extends JFrame {
 		btnNewButton_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				JTransferencia jTransferencia = new JTransferencia(corrente, poupanca, usuarioLogado, contaCorrente, contaPoupanca);
+				JTransferencia jTransferencia = new JTransferencia(contaAtual, corrente, poupanca, usuarioLogado, contaCorrente, contaPoupanca);
 				jTransferencia.setLocationRelativeTo(jTransferencia);
 				jTransferencia.setVisible(true);
 			}
@@ -133,7 +134,7 @@ public class JContaCorrente extends JFrame {
 		btnNewButton_1_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				JDeposito jDeposito = new JDeposito(corrente, poupanca, usuarioLogado, contaCorrente, contaPoupanca);
+				JDeposito jDeposito = new JDeposito(contaAtual, corrente, poupanca, usuarioLogado, contaCorrente, contaPoupanca);
 				jDeposito.setLocationRelativeTo(jDeposito);
 				jDeposito.setVisible(true);
 			}
@@ -147,12 +148,6 @@ public class JContaCorrente extends JFrame {
 		JPanel panel_1_1 = new JPanel();
 		panel_1_1.setBounds(10, 219, 408, 2);
 		contentPane_1.add(panel_1_1);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("R$00,00");
-		lblNewLabel_1_1.setForeground(Color.WHITE);
-		lblNewLabel_1_1.setFont(new Font("Dialog", Font.BOLD, 25));
-		lblNewLabel_1_1.setBounds(10, 266, 107, 30);
-		contentPane_1.add(lblNewLabel_1_1);
 		
 		JLabel lblValoresCobradosPor = new JLabel("Valores cobrados por operação:");
 		lblValoresCobradosPor.setForeground(Color.WHITE);
@@ -190,5 +185,16 @@ public class JContaCorrente extends JFrame {
 		});
 		botaoVoltar.setBounds(329, 407, 89, 23);
 		contentPane_1.add(botaoVoltar);
+		
+		JButton botaoRelatorio = new JButton("Gerar Relatório");
+		botaoRelatorio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Tributação Total R$ "
+						+ df.format(contaCorrente.getTotalTributacao()) , "Relatório",
+								JOptionPane.DEFAULT_OPTION);
+			}
+		});
+		botaoRelatorio.setBounds(35, 266, 136, 23);
+		contentPane_1.add(botaoRelatorio);
 	}
 }

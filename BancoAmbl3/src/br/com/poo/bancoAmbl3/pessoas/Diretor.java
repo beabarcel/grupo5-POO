@@ -22,7 +22,7 @@ public class Diretor extends Funcionario {
 	}
 
 	public void relatorio() {
-
+		
 	}
 
 	public int[] getAgencias() {

@@ -1,6 +1,14 @@
 package br.com.poo.bancoAmbl3.contas;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
+import br.com.poo.bancoAmbl3.enums.StatusAnalise;
+import br.com.poo.bancoAmbl3.enums.TipoConta;
+import br.com.poo.bancoAmbl3.enums.TipoRegistro;
+import br.com.poo.bancoAmbl3.io.LeituraEscrita;
+import br.com.poo.bancoAmbl3.pessoas.Cliente;
 
 //import java.util.Date;
 
@@ -21,6 +29,12 @@ public abstract class Conta {
 	
 	public Conta(String titular, String cpfTitular) {
 		this.numeroConta = Conta.contador;
+		Conta.contador++;
+	}
+	
+	public Conta(double saldo) {
+		this.numeroConta = Conta.contador;
+		this.saldo = saldo;
 		Conta.contador++;
 	}
 
@@ -76,10 +90,16 @@ public abstract class Conta {
     
     public abstract boolean transferir(Conta destino, double valor);
 		
+    public abstract boolean relatorioSaldo(double valor);
 	
 	public void imprimirExtrato() {
 		
 	}
+	
+	/*public Conta buscarSaldo(Double saldo) throws IOException {
+        Map<String, Conta> conta = buscarContas();
+        return  Conta.buscarContas().get(saldo);
+	}*/
 
 	@Override
 	public String toString() {

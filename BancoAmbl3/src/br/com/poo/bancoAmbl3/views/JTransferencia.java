@@ -27,7 +27,7 @@ public class JTransferencia extends JFrame {
 	private JLabel lblInsiraODestino;
 	private JTextField textNumeroConta;
 
-	public JTransferencia(boolean cc, boolean cp, Cliente usuarioLogado, ContaCorrente contaCorrente,
+	public JTransferencia(String contaAtual, boolean cc, boolean cp, Cliente usuarioLogado, ContaCorrente contaCorrente,
 			ContaPoupanca contaPoupanca) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 218);
@@ -73,7 +73,7 @@ public class JTransferencia extends JFrame {
 
 					contaCorrente.transferir(conta, valor);
 					dispose();
-					JContaCorrente jContaCorrente = new JContaCorrente(cc, cp, usuarioLogado, contaCorrente,
+					JContaCorrente jContaCorrente = new JContaCorrente(contaAtual, cc, cp, usuarioLogado, contaCorrente,
 							contaPoupanca);
 					jContaCorrente.setLocationRelativeTo(jContaCorrente);
 					jContaCorrente.setVisible(true);

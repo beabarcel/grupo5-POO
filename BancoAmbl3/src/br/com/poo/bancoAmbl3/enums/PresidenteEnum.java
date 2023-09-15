@@ -1,6 +1,6 @@
 package br.com.poo.bancoAmbl3.enums;
 
-public enum Presidente {
+public enum PresidenteEnum {
 
 	CADASTRAR_CLIENTE("Cadastrar Cliente", 1),
 	CADASTRAR_FUNCIONARIO("Cadastrar Funcionário", 2),
@@ -10,7 +10,7 @@ public enum Presidente {
 	private String tipo;
 	private int id;
 	
-	Presidente(String tipo, int id){
+	PresidenteEnum(String tipo, int id){
 		this.tipo = tipo;
 		this.id = id;
 	}

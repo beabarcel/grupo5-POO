@@ -113,6 +113,12 @@ public class ContaPoupanca extends Conta {
 		return contaPoupanca.get(cpf);
 	}
 
+	@Override
+	public boolean relatorioSaldo(double valor) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 
 }

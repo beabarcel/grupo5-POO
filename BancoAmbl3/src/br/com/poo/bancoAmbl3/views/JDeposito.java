@@ -25,7 +25,7 @@ public class JDeposito extends JFrame {
 	private JTextField textValorDeposito;
 	private JButton btnVoltar;
 
-	public JDeposito(boolean cc, boolean cp, Cliente usuarioLogado, ContaCorrente contaCorrente, ContaPoupanca contaPoupanca) {
+	public JDeposito(String contaAtual, boolean cc, boolean cp, Cliente usuarioLogado, ContaCorrente contaCorrente, ContaPoupanca contaPoupanca) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 218);
 		contentPane = new JPanel();
@@ -51,12 +51,21 @@ public class JDeposito extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Double valor = Double.parseDouble(textValorDeposito.getText());
-				contaCorrente.depositar(valor);
 				dispose();
-				JContaCorrente jContaCorrente = new JContaCorrente(cc, cp, usuarioLogado, contaCorrente, contaPoupanca);
-				jContaCorrente.setLocationRelativeTo(jContaCorrente);
-				jContaCorrente.setVisible(true);
+				if (contaAtual == "corrente") {
+					contaCorrente.depositar(valor);
+					JContaCorrente jContaCorrente = new JContaCorrente(contaAtual, cc, cp, usuarioLogado, contaCorrente,
+							contaPoupanca);
+					jContaCorrente.setLocationRelativeTo(jContaCorrente);
+					jContaCorrente.setVisible(true);
+				} else if(contaAtual == "poupança"){
+					contaPoupanca.depositar(valor);
+					JContaPoupanca jContaPoupanca = new JContaPoupanca(contaAtual, cc, cp, usuarioLogado, contaCorrente,
+							contaPoupanca);
+					jContaPoupanca.setLocationRelativeTo(jContaPoupanca);
+					jContaPoupanca.setVisible(true);
 				}
+			}
 		});
 		btnNewButton.setBounds(174, 133, 89, 23);
 		contentPane.add(btnNewButton);

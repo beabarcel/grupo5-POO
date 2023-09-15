@@ -10,6 +10,7 @@ import br.com.poo.bancoAmbl3.contas.Conta;
 import br.com.poo.bancoAmbl3.contas.ContaCorrente;
 import br.com.poo.bancoAmbl3.contas.ContaPoupanca;
 import br.com.poo.bancoAmbl3.pessoas.Cliente;
+import br.com.poo.bancoAmbl3.pessoas.Presidente;
 
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -25,9 +26,11 @@ public class JSaque extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	
-	public JSaque(boolean cc, boolean cp, Cliente usuarioLogado, ContaCorrente contaCorrente, ContaPoupanca contaPoupanca) {
-		
+
+	public JSaque(String contaAtual, boolean cc, boolean cp, Cliente usuarioLogado, ContaCorrente contaCorrente,
+			ContaPoupanca contaPoupanca) {
+		setTitle("Saque - Sistema Bancário");
+
 //		Conta conta = null;
 //		try {
 //			conta = new ContaCorrente().buscarContaCorrentePorCpf(usuario.getCpf());
@@ -38,36 +41,53 @@ public class JSaque extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 218);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(0, 128, 128));
+		contentPane.setBackground(new Color(64, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		textField = new JTextField();
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
 		textField.setBounds(174, 74, 86, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
-		JLabel lblNewLabel = new JLabel("Insira o valor do saque");
+
+		JLabel lblNewLabel = new JLabel("Insira o valor do saque que você deseja realizar");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel.setBounds(110, 26, 214, 14);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel.setBounds(28, 35, 363, 14);
 		contentPane.add(lblNewLabel);
-		
+
 		JButton btnNewButton = new JButton("Confirmar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Presidente presidente = new Presidente();
 				Double valor = Double.parseDouble(textField.getText());
-				contaCorrente.sacar(valor);
+				presidente.setTotalCapital(presidente.getTotalCapital() + valor);
+
 				dispose();
-				JContaCorrente jContaCorrente = new JContaCorrente(cc, cp, usuarioLogado, contaCorrente, contaPoupanca);
-				jContaCorrente.setLocationRelativeTo(jContaCorrente);
-				jContaCorrente.setVisible(true);
+				if (contaAtual == "corrente") {
+					contaCorrente.sacar(valor);
+					JContaCorrente jContaCorrente = new JContaCorrente(contaAtual, cc, cp, usuarioLogado, contaCorrente,
+							contaPoupanca);
+					jContaCorrente.setLocationRelativeTo(jContaCorrente);
+					jContaCorrente.setVisible(true);
+				} else if(contaAtual == "poupança"){
+					contaPoupanca.sacar(valor);
+					JContaPoupanca jContaPoupanca = new JContaPoupanca(contaAtual, cc, cp, usuarioLogado, contaCorrente,
+							contaPoupanca);
+					jContaPoupanca.setLocationRelativeTo(jContaPoupanca);
+					jContaPoupanca.setVisible(true);
+				}
 			}
 		});
 		btnNewButton.setBounds(174, 133, 89, 23);
 		contentPane.add(btnNewButton);
+
+		JLabel label$ = new JLabel("R$");
+		label$.setFont(new Font("Tahoma", Font.BOLD, 12));
+		label$.setBounds(146, 76, 25, 14);
+		contentPane.add(label$);
 	}
 }

@@ -29,7 +29,7 @@ public class JContaPoupanca extends JFrame {
 	private JTextField textDias;
 	DecimalFormat df = new DecimalFormat("#,###.00");
 
-	public JContaPoupanca(boolean corrente, boolean poupanca, Cliente usuarioLogado, ContaCorrente contaCorrente, ContaPoupanca contaPoupanca) {
+	public JContaPoupanca(String contaAtual, boolean corrente, boolean poupanca, Cliente usuarioLogado, ContaCorrente contaCorrente, ContaPoupanca contaPoupanca) {
 		setTitle("Conta Poupança - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 480);
@@ -106,20 +106,29 @@ public class JContaPoupanca extends JFrame {
 		contentPane.add(lblPrazomeses);
 		
 		JButton btnNewButton_1 = new JButton("Sacar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					dispose();
+					JSaque jSaque = new JSaque(contaAtual, corrente, poupanca, usuarioLogado, contaCorrente, contaPoupanca);
+					jSaque.setLocationRelativeTo(jSaque);
+					jSaque.setVisible(true);
+			}
+		});
 		btnNewButton_1.setBackground(UIManager.getColor("Button.background"));
 		btnNewButton_1.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnNewButton_1.setForeground(new Color(0, 51, 51));
 		btnNewButton_1.setBounds(40, 169, 89, 23);
 		contentPane.add(btnNewButton_1);
-		
-		JButton btnNewButton_1_1 = new JButton("Transferir");
-		btnNewButton_1_1.setBackground(UIManager.getColor("Button.background"));
-		btnNewButton_1_1.setForeground(new Color(0, 51, 51));
-		btnNewButton_1_1.setFont(new Font("Dialog", Font.BOLD, 12));
-		btnNewButton_1_1.setBounds(169, 169, 89, 23);
-		contentPane.add(btnNewButton_1_1);
-		
+	
 		JButton btnNewButton_1_1_1 = new JButton("Depositar");
+		btnNewButton_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				JDeposito jDeposito = new JDeposito(contaAtual, corrente, poupanca, usuarioLogado, contaCorrente, contaPoupanca);
+				jDeposito.setLocationRelativeTo(jDeposito);
+				jDeposito.setVisible(true);
+			}
+		});
 		btnNewButton_1_1_1.setBackground(UIManager.getColor("Button.background"));
 		btnNewButton_1_1_1.setForeground(new Color(0, 51, 51));
 		btnNewButton_1_1_1.setFont(new Font("Dialog", Font.BOLD, 12));
@@ -143,7 +152,7 @@ public class JContaPoupanca extends JFrame {
 				Integer dias = Integer.parseInt(textDias.getText());
 				Double valor = Double.parseDouble(textValor.getText());
 				ContaPoupanca contap = new ContaPoupanca();
-				JOptionPane.showMessageDialog(null, "Rendimendo total $"
+				JOptionPane.showMessageDialog(null, "Rendimendo total R$"
 				+ df.format(contap.relatorioRendimento(dias, valor)) , "Relatório",
 						JOptionPane.DEFAULT_OPTION);
 			}

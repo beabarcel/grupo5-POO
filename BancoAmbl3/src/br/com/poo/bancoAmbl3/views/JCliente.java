@@ -83,7 +83,7 @@ public class JCliente extends JFrame {
 			botaoContaCorrente.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					dispose();
-					JContaCorrente jContaCorrente = new JContaCorrente(cc, cp, usuarioLogado, contaCorrente, contaPoupanca);
+					JContaCorrente jContaCorrente = new JContaCorrente("corrente", cc, cp, usuarioLogado, contaCorrente, contaPoupanca);
 					jContaCorrente.setLocationRelativeTo(jContaCorrente);
 					jContaCorrente.setVisible(true);
 				}
@@ -96,7 +96,7 @@ public class JCliente extends JFrame {
 			botaoContaPoupanca.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					dispose();
-					JContaPoupanca jContaPoupanca = new JContaPoupanca(cc, cp, usuarioLogado, contaCorrente, contaPoupanca);
+					JContaPoupanca jContaPoupanca = new JContaPoupanca("poupança", cc, cp, usuarioLogado, contaCorrente, contaPoupanca);
 					jContaPoupanca.setLocationRelativeTo(jContaPoupanca);
 					jContaPoupanca.setVisible(true);
 				}
