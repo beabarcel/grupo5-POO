@@ -1,15 +1,15 @@
 package br.com.poo.bancoAmbl3.enums;
 
-public enum Funcionario {
-
-	CADASTRAR_CONTA("Cadastrar Conta", 1),
-	RELATORIO_DIRETORES("Relatório de Diretores", 2),
-	RELATORIO_VALORES("Relatório de Valores", 3);
+public enum Agencias {
+	A("1", 1),
+	B("2", 2),
+	C("3", 3),
+	D("4", 4);
 	
 	private String tipo;
 	private int id;
 	
-	Funcionario(String tipo, int id){
+	Agencias(String tipo, int id){
 		this.tipo = tipo;
 		this.id = id;
 	}

@@ -103,14 +103,17 @@ public class JLogin extends JFrame {
 							e1.printStackTrace();
 						}
 					} else if (autenticacao.getTipoPessoa().equals("GERENTE")) {
+						dispose();
 						JGerente jGerente = new JGerente();
 						jGerente.setLocationRelativeTo(jGerente);
 						jGerente.setVisible(true);
 					} else if (autenticacao.getTipoPessoa().equals("DIRETOR")) {
+						dispose();
 						JDiretor jDiretor = new JDiretor();
 						jDiretor.setLocationRelativeTo(jDiretor);
 						jDiretor.setVisible(true);
 					} else if (autenticacao.getTipoPessoa().equals("PRESIDENTE")) {
+						dispose();
 						JPresidente jPresidente = new JPresidente();
 						jPresidente.setLocationRelativeTo(jPresidente);
 						jPresidente.setVisible(true);

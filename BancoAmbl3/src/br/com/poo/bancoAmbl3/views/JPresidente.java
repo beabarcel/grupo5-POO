@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import br.com.poo.bancoAmbl3.enums.Funcionario;
+import br.com.poo.bancoAmbl3.enums.Presidente;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -52,6 +52,9 @@ public class JPresidente extends JFrame {
 		botaoSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				JLogin jLogin = new JLogin();
+				jLogin.setLocationRelativeTo(jLogin);
+				jLogin.setVisible(true);
 			}
 		});
 		botaoSair.setForeground(new Color(0, 0, 0));
@@ -66,24 +69,30 @@ public class JPresidente extends JFrame {
 		contentPane.add(labelAcao);
 		
 		JComboBox<String> comboBox = new JComboBox<>();
-		List<Funcionario> funcoesP = Arrays.asList(Funcionario.values());
+		List<Presidente> funcoesP = Arrays.asList(Presidente.values());
 		comboBox.addItem("Selecione uma das opções:");
-		for(Funcionario opcao : funcoesP) {
+		for(Presidente opcao : funcoesP) {
 			comboBox.addItem(opcao.getTipo());
 		}
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String tipo = comboBox.getSelectedItem().toString();
-				if(tipo.equalsIgnoreCase(Funcionario.CADASTRAR_CONTA.getTipo())) {
-					//dispose();
+				if(tipo.equalsIgnoreCase(Presidente.CADASTRAR_CLIENTE.getTipo())) {
+					dispose();
 					JCadastro jCadastro = new JCadastro();
 					jCadastro.setLocationRelativeTo(jCadastro);
 					jCadastro.setVisible(true);
-				} else if(tipo.equalsIgnoreCase(Funcionario.RELATORIO_DIRETORES.getTipo())) {
-					//dispose();
+				} else if(tipo.equalsIgnoreCase(Presidente.CADASTRAR_FUNCIONARIO.getTipo())) {
+					dispose();
+					JCadastroFuncionario jCadastroFuncionario = new JCadastroFuncionario();
+					jCadastroFuncionario.setLocationRelativeTo(jCadastroFuncionario);
+					jCadastroFuncionario.setVisible(true);
 					//implementar relatorio diretores
-				} else if(tipo.equalsIgnoreCase(Funcionario.RELATORIO_VALORES.getTipo())) {
-					//dispose();
+				} else if(tipo.equalsIgnoreCase(Presidente.RELATORIO_DIRETORES.getTipo())) {
+					dispose();
+					//implementar relatorio diretores
+				} else if(tipo.equalsIgnoreCase(Presidente.RELATORIO_VALORES.getTipo())) {
+					dispose();
 					//implementar relatorio valores
 				}
 			}

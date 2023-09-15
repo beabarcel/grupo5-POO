@@ -52,6 +52,9 @@ public class JGerente extends JFrame {
 		botaoSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				JLogin jLogin = new JLogin();
+				jLogin.setLocationRelativeTo(jLogin);
+				jLogin.setVisible(true);
 			}
 		});
 		botaoSair.setForeground(new Color(0, 0, 0));

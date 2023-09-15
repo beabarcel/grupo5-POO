@@ -17,10 +17,12 @@ import javax.swing.border.SoftBevelBorder;
 import br.com.poo.bancoAmbl3.contas.Conta;
 import br.com.poo.bancoAmbl3.contas.ContaCorrente;
 import br.com.poo.bancoAmbl3.contas.ContaPoupanca;
-import br.com.poo.bancoAmbl3.enums.Agencias;
+import br.com.poo.bancoAmbl3.enums.Cargos;
 import br.com.poo.bancoAmbl3.enums.Presidente;
 import br.com.poo.bancoAmbl3.enums.TipoConta;
 import br.com.poo.bancoAmbl3.pessoas.Cliente;
+import br.com.poo.bancoAmbl3.pessoas.Diretor;
+import br.com.poo.bancoAmbl3.pessoas.Gerente;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.JButton;
@@ -31,9 +33,8 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
 import java.awt.event.ActionEvent;
-import java.awt.Rectangle;
 
-public class JCadastro extends JFrame {
+public class JCadastroFuncionario extends JFrame {
 
 	/**
 	 * 
@@ -46,11 +47,10 @@ public class JCadastro extends JFrame {
 	private JTextField txtNovoTelefone;
 	private JTextField txtNovoEmail;
 
-	public JCadastro() {
-		setBounds(new Rectangle(0, 0, 0, 600));
+	public JCadastroFuncionario() {
 		setTitle("Cadastro - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 444, 501);
+		setBounds(100, 100, 444, 574);
 		setBounds(100, 100, 444, 480);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(64, 128, 128));
@@ -156,11 +156,11 @@ public class JCadastro extends JFrame {
 		labelNovoEmail.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(labelNovoEmail);
 		
-		JComboBox<String> tipoConta = new JComboBox<>();
-		List<TipoConta> funcoesC = Arrays.asList(TipoConta.values());
-		tipoConta.addItem("Selecione uma das opções:");
-		for(TipoConta opcao : funcoesC) {
-			tipoConta.addItem(opcao.getTipo());
+		JComboBox<String> cargos = new JComboBox<>();
+		List<Cargos> funcoesC = Arrays.asList(Cargos.values());
+		cargos.addItem("Selecione uma das opções:");
+		for(Cargos opcao : funcoesC) {
+			cargos.addItem(opcao.getTipo());
 		}
 		
 		JButton botaoSalvarCadastro = new JButton("Cadastrar");
@@ -171,39 +171,21 @@ public class JCadastro extends JFrame {
 				String novoNome = txtNovoNome.getText();
 				String novoTelefone = txtNovoTelefone.getText();
 				String novoEmail = txtNovoEmail.getText();
-				String tipo = tipoConta.getSelectedItem().toString();
-				if(novoNome.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Campo Nome vazio", "Aviso",
-							JOptionPane.WARNING_MESSAGE);
-				}
-				if(novaSenha.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Campo Senha Vazio", "Aviso",
-							JOptionPane.WARNING_MESSAGE);
-				}
-				if(novoCpf.isEmpty() ) {
-					JOptionPane.showMessageDialog(null, "Campo Cpf Vazio", "Aviso",
-							JOptionPane.WARNING_MESSAGE);
-				}
-				if(novoTelefone.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Campo Telefone Vazio", "Aviso",
-							JOptionPane.WARNING_MESSAGE);
-				}
-				if(novoEmail.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Campo Email Vazio", "Aviso",
+				String tipo = cargos.getSelectedItem().toString();
+				if(novoNome.isEmpty()||novaSenha.isEmpty()||novoCpf.isEmpty()||novoTelefone.isEmpty()||novoEmail.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Aviso",
 							JOptionPane.WARNING_MESSAGE);
 				}
 				
 				
 				
 				
-				if(tipo.equalsIgnoreCase(TipoConta.CONTA_CORRENTE.getTipo())) {
-					Cliente c = new Cliente(novoNome, novoCpf, novoEmail, novoTelefone, novaSenha);
-					ContaCorrente cc = new ContaCorrente(novoCpf, novoNome);
-					System.out.println(c);
-				} else if (tipo.equalsIgnoreCase(TipoConta.CONTA_POUPANCA.getTipo())) {
-					Cliente c = new Cliente(novoNome, novoCpf, novoEmail, novoTelefone, novaSenha);
-					ContaPoupanca cp = new ContaPoupanca(novoCpf, novoNome);
-					System.out.println(cp);
+				if(tipo.equalsIgnoreCase(Cargos.DIRETOR.getTipo())) {
+					Diretor d = new Diretor(novoNome, novoCpf, novoEmail, novoTelefone, novaSenha);
+					System.out.println(d);
+				} else if (tipo.equalsIgnoreCase(Cargos.GERENTE.getTipo())) {
+					Gerente g = new Gerente(novoNome, novoCpf, novoEmail, novoTelefone, novaSenha);
+					System.out.println(g);
 				}
 			}
 
@@ -212,13 +194,13 @@ public class JCadastro extends JFrame {
 		botaoSalvarCadastro.setBackground(new Color(255, 255, 255));
 		contentPane.add(botaoSalvarCadastro);
 		
-		tipoConta.setBounds(90, 342, 120, 22);
-		contentPane.add(tipoConta);
+		cargos.setBounds(90, 342, 248, 22);
+		contentPane.add(cargos);
 		
-		JLabel lblTipoDaConta = new JLabel("Tipo da conta *");
-		lblTipoDaConta.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblTipoDaConta.setBounds(90, 318, 113, 13);
-		contentPane.add(lblTipoDaConta);
+		JLabel lblCargo = new JLabel("Cargo *");
+		lblCargo.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblCargo.setBounds(90, 318, 113, 13);
+		contentPane.add(lblCargo);
 		
 		JButton sairButton = new JButton("Sair");
 		sairButton.addActionListener(new ActionListener() {
@@ -231,20 +213,6 @@ public class JCadastro extends JFrame {
 		});
 		sairButton.setBounds(249, 381, 89, 23);
 		contentPane.add(sairButton);
-		
-		JLabel lblAgncia = new JLabel("Agência *");
-		lblAgncia.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblAgncia.setBounds(219, 318, 72, 13);
-		contentPane.add(lblAgncia);
-		
-		JComboBox<String> tipoConta_1 = new JComboBox<String>();
-		List<Agencias> agencias = Arrays.asList(Agencias.values());
-		tipoConta.addItem("Selecione uma das opções:");
-		for(Agencias opcao : agencias) {
-			tipoConta_1.addItem(opcao.getTipo());
-		}
-		tipoConta_1.setBounds(218, 342, 120, 22);
-		contentPane.add(tipoConta_1);
 		
 	}
 }
