@@ -48,7 +48,7 @@ public class JCadastroFuncionario extends JFrame {
 	private JTextField txtNovoEmail;
 
 	public JCadastroFuncionario() {
-		setTitle("Cadastro - Sistema Bancário");
+		setTitle("Cadastro Funcionário - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 574);
 		setBounds(100, 100, 444, 480);
@@ -59,9 +59,9 @@ public class JCadastroFuncionario extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel labelCadastro = new JLabel("Cadastro Cliente");
+		JLabel labelCadastro = new JLabel("Cadastro Funcionário");
 		labelCadastro.setHorizontalAlignment(SwingConstants.CENTER);
-		labelCadastro.setBounds(137, 0, 154, 45);
+		labelCadastro.setBounds(108, 0, 183, 45);
 		labelCadastro.setForeground(new Color(0, 0, 0));
 		labelCadastro.setFont(new Font("Tahoma", Font.BOLD, 15));
 		contentPane.add(labelCadastro);

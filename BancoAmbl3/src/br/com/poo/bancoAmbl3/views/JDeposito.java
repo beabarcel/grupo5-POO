@@ -24,8 +24,10 @@ public class JDeposito extends JFrame {
 	private JPanel contentPane;
 	private JTextField textValorDeposito;
 	private JButton btnVoltar;
+	private JLabel lblNewLabel_1;
 
 	public JDeposito(String contaAtual, boolean cc, boolean cp, Cliente usuarioLogado, ContaCorrente contaCorrente, ContaPoupanca contaPoupanca) {
+		setTitle("Depósito - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 218);
 		contentPane = new JPanel();
@@ -67,15 +69,31 @@ public class JDeposito extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(174, 133, 89, 23);
+		btnNewButton.setBounds(163, 113, 111, 23);
 		contentPane.add(btnNewButton);
 		
 		btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (contaAtual == "corrente") {
+					JContaCorrente jContaCorrente = new JContaCorrente(contaAtual, cc, cp, usuarioLogado, contaCorrente,
+							contaPoupanca);
+					jContaCorrente.setLocationRelativeTo(jContaCorrente);
+					jContaCorrente.setVisible(true);
+				} else if(contaAtual == "poupança"){
+					JContaPoupanca jContaPoupanca = new JContaPoupanca(contaAtual, cc, cp, usuarioLogado, contaCorrente,
+							contaPoupanca);
+					jContaPoupanca.setLocationRelativeTo(jContaPoupanca);
+					jContaPoupanca.setVisible(true);
+				}
 			}
 		});
-		btnVoltar.setBounds(335, 133, 89, 23);
+		btnVoltar.setBounds(351, 145, 73, 23);
 		contentPane.add(btnVoltar);
+		
+		lblNewLabel_1 = new JLabel("R$");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_1.setBounds(149, 76, 25, 14);
+		contentPane.add(lblNewLabel_1);
 	}
 }

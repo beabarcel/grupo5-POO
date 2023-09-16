@@ -69,13 +69,13 @@ public class JContaCorrente extends JFrame {
 		panel.add(lblOlPessoa);
 		
 		JLabel lblNewLabel = new JLabel("Saldo");
-		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblNewLabel.setBounds(10, 74, 46, 14);
 		contentPane_1.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("R$" + df.format(contaCorrente.getSaldo()));
-		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setForeground(new Color(0, 0, 0));
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 25));
 		lblNewLabel_1.setBounds(10, 102, 248, 30);
 		contentPane_1.add(lblNewLabel_1);
@@ -91,7 +91,7 @@ public class JContaCorrente extends JFrame {
 		contentPane_1.add(btnNewButton);
 		
 		JLabel lblNewLabel_2 = new JLabel("Relatório de Tributação");
-		lblNewLabel_2.setForeground(Color.WHITE);
+		lblNewLabel_2.setForeground(new Color(0, 0, 0));
 		lblNewLabel_2.setFont(new Font("Dialog", Font.BOLD, 15));
 		lblNewLabel_2.setBounds(10, 232, 203, 23);
 		contentPane_1.add(lblNewLabel_2);
@@ -112,8 +112,8 @@ public class JContaCorrente extends JFrame {
 		btnNewButton_1.setForeground(new Color(0, 51, 51));
 		btnNewButton_1.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnNewButton_1.setBackground(UIManager.getColor("Button.background"));
-		btnNewButton_1.setBounds(35, 169, 89, 23);
-		contentPane_1.add(btnNewButton_1);
+		btnNewButton_1.setBounds(35, 169, 96, 23);
+//		contentPane_1.add(btnNewButton_1);
 		
 		JButton btnNewButton_1_1 = new JButton("Transferir");
 		btnNewButton_1_1.addActionListener(new ActionListener() {
@@ -142,7 +142,7 @@ public class JContaCorrente extends JFrame {
 		btnNewButton_1_1_1.setForeground(new Color(0, 51, 51));
 		btnNewButton_1_1_1.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnNewButton_1_1_1.setBackground(UIManager.getColor("Button.background"));
-		btnNewButton_1_1_1.setBounds(301, 169, 89, 23);
+		btnNewButton_1_1_1.setBounds(301, 169, 96, 23);
 		contentPane_1.add(btnNewButton_1_1_1);
 		
 		JPanel panel_1_1 = new JPanel();
@@ -150,25 +150,25 @@ public class JContaCorrente extends JFrame {
 		contentPane_1.add(panel_1_1);
 		
 		JLabel lblValoresCobradosPor = new JLabel("Valores cobrados por operação:");
-		lblValoresCobradosPor.setForeground(Color.WHITE);
+		lblValoresCobradosPor.setForeground(new Color(0, 0, 0));
 		lblValoresCobradosPor.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblValoresCobradosPor.setBounds(10, 307, 203, 14);
 		contentPane_1.add(lblValoresCobradosPor);
 		
 		JLabel lblSaqueRdez = new JLabel("Saque: R$0,10 (dez centavos)");
-		lblSaqueRdez.setForeground(Color.WHITE);
+		lblSaqueRdez.setForeground(new Color(0, 0, 0));
 		lblSaqueRdez.setFont(new Font("Dialog", Font.ITALIC, 12));
 		lblSaqueRdez.setBounds(10, 332, 217, 14);
 		contentPane_1.add(lblSaqueRdez);
 		
 		JLabel lblDepsitoRdez = new JLabel("Depósito: R$0,10 (dez centavos)");
-		lblDepsitoRdez.setForeground(Color.WHITE);
+		lblDepsitoRdez.setForeground(new Color(0, 0, 0));
 		lblDepsitoRdez.setFont(new Font("Dialog", Font.ITALIC, 12));
 		lblDepsitoRdez.setBounds(10, 359, 217, 14);
 		contentPane_1.add(lblDepsitoRdez);
 		
 		JLabel lblTransfernciaRvinte = new JLabel("Transferência: R$0,20 (vinte centavos)");
-		lblTransfernciaRvinte.setForeground(Color.WHITE);
+		lblTransfernciaRvinte.setForeground(new Color(0, 0, 0));
 		lblTransfernciaRvinte.setFont(new Font("Dialog", Font.ITALIC, 12));
 		lblTransfernciaRvinte.setBounds(10, 384, 217, 14);
 		contentPane_1.add(lblTransfernciaRvinte);
@@ -194,7 +194,20 @@ public class JContaCorrente extends JFrame {
 								JOptionPane.DEFAULT_OPTION);
 			}
 		});
-		botaoRelatorio.setBounds(35, 266, 136, 23);
+		botaoRelatorio.setBounds(20, 266, 144, 23);
 		contentPane_1.add(botaoRelatorio);
+		
+		JButton botaoSacar = new JButton("Sacar");
+		botaoSacar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					dispose();
+					JSaque jSaque = new JSaque(contaAtual, corrente, poupanca, usuarioLogado, contaCorrente, contaPoupanca);
+					jSaque.setLocationRelativeTo(jSaque);
+					jSaque.setVisible(true);
+			}
+		});
+		botaoSacar.setFont(new Font("Dialog", Font.BOLD, 12));
+		botaoSacar.setBounds(37, 170, 96, 23);
+		contentPane_1.add(botaoSacar);
 	}
 }

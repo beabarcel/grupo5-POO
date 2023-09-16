@@ -82,12 +82,33 @@ public class JSaque extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(174, 133, 89, 23);
+		btnNewButton.setBounds(174, 133, 99, 23);
 		contentPane.add(btnNewButton);
 
 		JLabel label$ = new JLabel("R$");
 		label$.setFont(new Font("Tahoma", Font.BOLD, 12));
 		label$.setBounds(146, 76, 25, 14);
 		contentPane.add(label$);
+		
+		JButton botaoVoltar = new JButton("Voltar");
+		botaoVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (contaAtual == "corrente") {
+					//contaCorrente.depositar(valor);
+					JContaCorrente jContaCorrente = new JContaCorrente(contaAtual, cc, cp, usuarioLogado, contaCorrente,
+							contaPoupanca);
+					jContaCorrente.setLocationRelativeTo(jContaCorrente);
+					jContaCorrente.setVisible(true);
+				} else if(contaAtual == "poupança"){
+					//contaPoupanca.depositar(valor);
+					JContaPoupanca jContaPoupanca = new JContaPoupanca(contaAtual, cc, cp, usuarioLogado, contaCorrente,
+							contaPoupanca);
+					jContaPoupanca.setLocationRelativeTo(jContaPoupanca);
+					jContaPoupanca.setVisible(true);
+				}
+			}
+		});
+		botaoVoltar.setBounds(323, 133, 89, 23);
+		contentPane.add(botaoVoltar);
 	}
 }

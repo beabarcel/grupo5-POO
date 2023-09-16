@@ -26,13 +26,16 @@ public class JTransferencia extends JFrame {
 	private JTextField textValorTransferencia;
 	private JLabel lblInsiraODestino;
 	private JTextField textNumeroConta;
+	private JLabel lblNewLabel;
+	private JButton botaoVoltar;
 
 	public JTransferencia(String contaAtual, boolean cc, boolean cp, Cliente usuarioLogado, ContaCorrente contaCorrente,
 			ContaPoupanca contaPoupanca) {
+		setTitle("Transferência - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 218);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(0, 128, 128));
+		contentPane.setBackground(new Color(64, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -40,14 +43,14 @@ public class JTransferencia extends JFrame {
 
 		textValorTransferencia = new JTextField();
 		textValorTransferencia.setHorizontalAlignment(SwingConstants.CENTER);
-		textValorTransferencia.setBounds(10, 44, 86, 20);
+		textValorTransferencia.setBounds(36, 44, 86, 20);
 		contentPane.add(textValorTransferencia);
 		textValorTransferencia.setColumns(10);
 
 		JLabel lblTransferencia = new JLabel("Insira o valor da transferência");
 		lblTransferencia.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTransferencia.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblTransferencia.setBounds(10, 11, 235, 14);
+		lblTransferencia.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblTransferencia.setBounds(-16, 11, 235, 14);
 		contentPane.add(lblTransferencia);
 
 		JButton btnNewButton = new JButton("Confirmar");
@@ -83,19 +86,43 @@ public class JTransferencia extends JFrame {
 
 			}
 		});
-		btnNewButton.setBounds(174, 133, 89, 23);
+		btnNewButton.setBounds(165, 133, 112, 23);
 		contentPane.add(btnNewButton);
 
 		lblInsiraODestino = new JLabel("Insira o número da conta de destino");
 		lblInsiraODestino.setHorizontalAlignment(SwingConstants.CENTER);
-		lblInsiraODestino.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblInsiraODestino.setBounds(10, 83, 293, 14);
+		lblInsiraODestino.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblInsiraODestino.setBounds(-26, 86, 293, 14);
 		contentPane.add(lblInsiraODestino);
 
 		textNumeroConta = new JTextField();
 		textNumeroConta.setHorizontalAlignment(SwingConstants.CENTER);
 		textNumeroConta.setColumns(10);
-		textNumeroConta.setBounds(10, 108, 86, 20);
+		textNumeroConta.setBounds(36, 111, 86, 20);
 		contentPane.add(textNumeroConta);
+		
+		lblNewLabel = new JLabel("R$");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel.setBounds(10, 46, 24, 14);
+		contentPane.add(lblNewLabel);
+		
+		botaoVoltar = new JButton("Voltar");
+		botaoVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (contaAtual == "corrente") {
+					JContaCorrente jContaCorrente = new JContaCorrente(contaAtual, cc, cp, usuarioLogado, contaCorrente,
+							contaPoupanca);
+					jContaCorrente.setLocationRelativeTo(jContaCorrente);
+					jContaCorrente.setVisible(true);
+				} else if(contaAtual == "poupança"){
+					JContaPoupanca jContaPoupanca = new JContaPoupanca(contaAtual, cc, cp, usuarioLogado, contaCorrente,
+							contaPoupanca);
+					jContaPoupanca.setLocationRelativeTo(jContaPoupanca);
+					jContaPoupanca.setVisible(true);
+				}
+			}
+		});
+		botaoVoltar.setBounds(325, 133, 81, 23);
+		contentPane.add(botaoVoltar);
 	}
 }

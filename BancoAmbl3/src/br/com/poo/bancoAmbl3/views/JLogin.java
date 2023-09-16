@@ -155,9 +155,5 @@ public class JLogin extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon("./imagens/Screenshot_2023-09-11_at_16.31.57.png"));
 		lblNewLabel.setBounds(0, 216, 605, 350);
 		contentPane.add(lblNewLabel);
-
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setBounds(69, 28, 70, 15);
-		contentPane.add(lblNewLabel_1);
 	}
 }

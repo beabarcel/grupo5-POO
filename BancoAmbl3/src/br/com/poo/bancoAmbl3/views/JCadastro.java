@@ -51,7 +51,7 @@ public class JCadastro extends JFrame {
 
 	public JCadastro() {
 		setBounds(new Rectangle(0, 0, 0, 600));
-		setTitle("Cadastro - Sistema Bancário");
+		setTitle("Cadastro Cliente - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 501);
 		setBounds(100, 100, 444, 480);
@@ -232,7 +232,7 @@ public class JCadastro extends JFrame {
 			}
 
 		});
-		botaoSalvarCadastro.setBounds(90, 382, 94, 21);
+		botaoSalvarCadastro.setBounds(90, 382, 120, 21);
 		botaoSalvarCadastro.setBackground(new Color(255, 255, 255));
 		contentPane.add(botaoSalvarCadastro);
 		
@@ -253,7 +253,7 @@ public class JCadastro extends JFrame {
 				jPresidente.setVisible(true);
 			}
 		});
-		sairButton.setBounds(249, 381, 89, 23);
+		sairButton.setBounds(218, 381, 120, 23);
 		contentPane.add(sairButton);
 		
 		JLabel lblAgncia = new JLabel("Agência *");

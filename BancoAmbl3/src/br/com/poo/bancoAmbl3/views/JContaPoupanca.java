@@ -62,13 +62,13 @@ public class JContaPoupanca extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Saldo");
 		lblNewLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setBounds(10, 74, 46, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel textSaldo = new JLabel("R$" + contaPoupanca.getSaldo());
 		textSaldo.setFont(new Font("Dialog", Font.BOLD, 25));
-		textSaldo.setForeground(new Color(255, 255, 255));
+		textSaldo.setForeground(new Color(0, 0, 0));
 		textSaldo.setBounds(10, 102, 269, 30);
 		contentPane.add(textSaldo);
 		
@@ -80,7 +80,7 @@ public class JContaPoupanca extends JFrame {
 		
 		JLabel lblNewLabel_2 = new JLabel("Relatório de Rendimento");
 		lblNewLabel_2.setFont(new Font("Dialog", Font.BOLD, 15));
-		lblNewLabel_2.setForeground(new Color(255, 255, 255));
+		lblNewLabel_2.setForeground(new Color(0, 0, 0));
 		lblNewLabel_2.setBounds(10, 232, 203, 23);
 		contentPane.add(lblNewLabel_2);
 		
@@ -95,12 +95,12 @@ public class JContaPoupanca extends JFrame {
 		
 		textDias = new JTextField();
 		textDias.setColumns(10);
-		textDias.setBounds(101, 266, 86, 20);
+		textDias.setBounds(88, 268, 86, 20);
 		contentPane.add(textDias);
 		
 		JLabel lblPrazomeses = new JLabel("Prazo (dias)");
 		lblPrazomeses.setHorizontalAlignment(SwingConstants.LEFT);
-		lblPrazomeses.setForeground(Color.WHITE);
+		lblPrazomeses.setForeground(new Color(0, 0, 0));
 		lblPrazomeses.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblPrazomeses.setBounds(10, 270, 107, 14);
 		contentPane.add(lblPrazomeses);
@@ -117,7 +117,7 @@ public class JContaPoupanca extends JFrame {
 		btnNewButton_1.setBackground(UIManager.getColor("Button.background"));
 		btnNewButton_1.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnNewButton_1.setForeground(new Color(0, 51, 51));
-		btnNewButton_1.setBounds(40, 169, 89, 23);
+		btnNewButton_1.setBounds(40, 169, 99, 23);
 		contentPane.add(btnNewButton_1);
 	
 		JButton btnNewButton_1_1_1 = new JButton("Depositar");
@@ -132,21 +132,21 @@ public class JContaPoupanca extends JFrame {
 		btnNewButton_1_1_1.setBackground(UIManager.getColor("Button.background"));
 		btnNewButton_1_1_1.setForeground(new Color(0, 51, 51));
 		btnNewButton_1_1_1.setFont(new Font("Dialog", Font.BOLD, 12));
-		btnNewButton_1_1_1.setBounds(298, 169, 89, 23);
+		btnNewButton_1_1_1.setBounds(289, 169, 98, 23);
 		contentPane.add(btnNewButton_1_1_1);
 		
-		JLabel lblValor = new JLabel("Valor");
+		JLabel lblValor = new JLabel("R$");
 		lblValor.setHorizontalAlignment(SwingConstants.LEFT);
-		lblValor.setForeground(Color.WHITE);
-		lblValor.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblValor.setBounds(271, 270, 86, 14);
+		lblValor.setForeground(new Color(0, 0, 0));
+		lblValor.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblValor.setBounds(289, 266, 24, 14);
 		contentPane.add(lblValor);
 		
 		JPanel panel_1_1 = new JPanel();
 		panel_1_1.setBounds(10, 219, 408, 2);
 		contentPane.add(panel_1_1);
 		
-		JButton btnNewButton_1_1_2 = new JButton("Fazer Relatório");
+		JButton btnNewButton_1_1_2 = new JButton("Gerar Relatório");
 		btnNewButton_1_1_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Integer dias = Integer.parseInt(textDias.getText());
@@ -160,7 +160,7 @@ public class JContaPoupanca extends JFrame {
 		btnNewButton_1_1_2.setForeground(new Color(0, 51, 51));
 		btnNewButton_1_1_2.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnNewButton_1_1_2.setBackground(UIManager.getColor("Button.background"));
-		btnNewButton_1_1_2.setBounds(10, 312, 119, 23);
+		btnNewButton_1_1_2.setBounds(10, 312, 129, 23);
 		contentPane.add(btnNewButton_1_1_2);
 		
 		JButton btnNewButton_1_1_1_1 = new JButton("Voltar");

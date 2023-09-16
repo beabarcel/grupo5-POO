@@ -23,7 +23,7 @@ public class JDiretor extends JFrame {
 	private JPanel contentPane;
 
 	public JDiretor() {
-		setTitle("Acesso Presidencial - Sistema Bancário");
+		setTitle("Acesso Diretoria - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 511, 416);
 		contentPane = new JPanel();
