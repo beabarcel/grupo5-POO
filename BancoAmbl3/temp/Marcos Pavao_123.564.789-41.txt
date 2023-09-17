@@ -19,3 +19,8 @@ CPF: 123.564.789-41
 Conta: 19897591
 Valor do Saque: 10000.0
 ** FIM SAQUE **
+** SAQUE **
+CPF: 123.564.789-41
+Conta: 19897591
+Valor do Saque: 2000.0
+** FIM SAQUE **
