@@ -1,4 +1,4 @@
-package br.com.poo.bancoAmbl3.contas.enums;
+package br.com.poo.bancoAmbl3.enums;
 
 public enum StatusAnalise {
 
@@ -6,4 +6,5 @@ public enum StatusAnalise {
 	TRANSFERENCIA_RECUSADA,
 	SAQUE_REALIZADO,
 	SALDO_INVALIDO,
+	SALDO,
 }

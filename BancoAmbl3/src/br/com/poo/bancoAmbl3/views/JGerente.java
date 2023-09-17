@@ -1,91 +1,122 @@
 package br.com.poo.bancoAmbl3.views;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import java.awt.Font;
-import javax.swing.JCheckBox;
-import javax.swing.JPasswordField;
+import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.swing.JButton;
-import javax.swing.ImageIcon;
-import java.awt.SystemColor;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import br.com.poo.bancoAmbl3.enums.GerenteEnum;
+import br.com.poo.bancoAmbl3.pessoas.Gerente;
 
 public class JGerente extends JFrame {
 
-	private JPanel entrar;
-	private JTextField usuario;
-	private JPasswordField passwordField;
-	private JPasswordField passwordField_1;
-	private JPasswordField senhaG;
-
 	/**
-	 * Launch the application.
+	 * 
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JGerente frame = new JGerente();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+
+	public JGerente() {
+		setTitle("Acesso Presidencial - Sistema Bancário");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 511, 416);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(64, 128, 128));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+
+		JLabel labelAcessoExclusivo = new JLabel("Acesso exclusivo à Gerencia");
+		labelAcessoExclusivo.setBackground(new Color(255, 255, 255));
+		labelAcessoExclusivo.setForeground(new Color(0, 0, 0));
+		labelAcessoExclusivo.setFont(new Font("Tahoma", Font.BOLD, 15));
+		labelAcessoExclusivo.setBounds(119, 0, 248, 45);
+		contentPane.add(labelAcessoExclusivo);
+
+		JLabel txtAmbl3 = new JLabel("AMBL3");
+		txtAmbl3.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		txtAmbl3.setBounds(440, 353, 45, 13);
+		contentPane.add(txtAmbl3);
+
+		JButton botaoSair = new JButton("Sair");
+		botaoSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				JLogin jLogin = new JLogin();
+				jLogin.setLocationRelativeTo(jLogin);
+				jLogin.setVisible(true);
+			}
+		});
+		botaoSair.setForeground(new Color(0, 0, 0));
+		botaoSair.setBackground(new Color(255, 255, 255));
+		botaoSair.setBounds(209, 328, 92, 22);
+		contentPane.add(botaoSair);
+
+		JLabel labelAcao = new JLabel("O que você deseja fazer?");
+		labelAcao.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		labelAcao.setHorizontalAlignment(SwingConstants.LEFT);
+		labelAcao.setBounds(53, 79, 161, 14);
+		contentPane.add(labelAcao);
+
+		// terminar
+		JComboBox<String> comboBox = new JComboBox<>();
+		List<GerenteEnum> funcoesP = Arrays.asList(GerenteEnum.values());
+		comboBox.addItem("Selecione uma das opções:");
+		for (GerenteEnum opcao : funcoesP) {
+			comboBox.addItem(opcao.getTipo());
+		}
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String tipo = comboBox.getSelectedItem().toString();
+				if (tipo.equalsIgnoreCase(GerenteEnum.CADASTRAR_CONTA.getTipo())) {
+					// dispose();
+					JCadastro jCadastro = new JCadastro();
+					jCadastro.setLocationRelativeTo(jCadastro);
+					jCadastro.setVisible(true);
+				} else if (tipo.equalsIgnoreCase(GerenteEnum.RELATORIO_CONTAS_AGENCIA.getTipo())) {
+					dispose();
+					Gerente gerente = new Gerente();
+					try {
+						JOptionPane.showMessageDialog(null, "Total de Contas "
+						        + gerente.relatorioTotalContas(), "Relatório Total",
+						                JOptionPane.DEFAULT_OPTION);
+					} catch (HeadlessException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} else if (tipo.equalsIgnoreCase(GerenteEnum.RELATORIO_CONTAS.getTipo())) {
+					dispose();
+					Gerente gerente = new Gerente();
+					try {
+						gerente.relatorioContas();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+
 				}
 			}
 		});
-	}
+		comboBox.setBounds(53, 104, 248, 22);
+		contentPane.add(comboBox);
 
-	/**
-	 * Create the frame.
-	 */
-	public JGerente() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 623, 443);
-		entrar = new JPanel();
-		entrar.setBackground(new Color(63, 191, 162));
-		entrar.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(entrar);
-		entrar.setLayout(null);
-		
-		JLabel acessoGerente = new JLabel("Acesso Gerente");
-		acessoGerente.setFont(new Font("Dialog", Font.BOLD, 22));
-		acessoGerente.setBounds(194, 42, 202, 27);
-		entrar.add(acessoGerente);
-		
-		usuario = new JTextField();
-		usuario.setBounds(172, 141, 256, 34);
-		entrar.add(usuario);
-		usuario.setColumns(10);
-		
-		JLabel usuarioGerente = new JLabel("Usuario:");
-		usuarioGerente.setBounds(172, 125, 70, 15);
-		entrar.add(usuarioGerente);
-		
-		JLabel senhaGerente = new JLabel("Senha:");
-		senhaGerente.setBounds(172, 221, 70, 15);
-		entrar.add(senhaGerente);
-		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(343, 267, -118, 19);
-		entrar.add(passwordField);
-		
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setForeground(new Color(255, 255, 255));
-		passwordField_1.setBounds(442, 288, -199, 19);
-		entrar.add(passwordField_1);
-		
-		senhaG = new JPasswordField();
-		senhaG.setForeground(new Color(0, 0, 0));
-		senhaG.setBounds(172, 235, 256, 34);
-		entrar.add(senhaG);
-		
-		JButton btnEntrar = new JButton("Entrar");
-		btnEntrar.setBounds(234, 299, 117, 25);
-		entrar.add(btnEntrar);
+		contentPane.add(comboBox);
 	}
 }

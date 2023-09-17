@@ -1,0 +1,21 @@
+** SAQUE **
+CPF: 123.564.789-41
+Conta: 19897591
+Valor do Saque: 10000.0
+** FIM SAQUE **
+** SAQUE **
+CPF: 123.564.789-41
+Conta: 19897591
+Valor do Saque: 10000.0
+** FIM SAQUE **
+** TRANSFERÊNCIA **
+CPF: 123.564.789-41
+Conta Remetente: 19897591
+Conta Destinatário: 163746
+Valor da transferência: 10000.0
+** FIM TRANSFERÊNCIA **
+** SAQUE **
+CPF: 123.564.789-41
+Conta: 19897591
+Valor do Saque: 10000.0
+** FIM SAQUE **

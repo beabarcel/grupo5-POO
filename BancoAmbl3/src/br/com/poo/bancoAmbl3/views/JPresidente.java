@@ -2,8 +2,7 @@ package br.com.poo.bancoAmbl3.views;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.HeadlessException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,19 +10,29 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import br.com.poo.bancoAmbl3.enums.Diretor;
+import br.com.poo.bancoAmbl3.enums.PresidenteEnum;
+import br.com.poo.bancoAmbl3.pessoas.Presidente;
 
-public class JDiretor extends JFrame {
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.awt.event.ActionEvent;
 
+public class JPresidente extends JFrame {
+
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-
-	public JDiretor() {
-		setTitle("Acesso Diretoria - Sistema Bancário");
+	private DecimalFormat df = new DecimalFormat("#,###.00");
+	public JPresidente() {
+		setTitle("Acesso Presidencial - Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 511, 416);
 		contentPane = new JPanel();
@@ -33,11 +42,11 @@ public class JDiretor extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel labelAcessoExclusivo = new JLabel("Acesso Diretoria");
+		JLabel labelAcessoExclusivo = new JLabel("Acesso exclusivo à Presidencia");
 		labelAcessoExclusivo.setBackground(new Color(255, 255, 255));
 		labelAcessoExclusivo.setForeground(new Color(0, 0, 0));
 		labelAcessoExclusivo.setFont(new Font("Tahoma", Font.BOLD, 15));
-		labelAcessoExclusivo.setBounds(170, 11, 131, 37);
+		labelAcessoExclusivo.setBounds(119, 0, 248, 45);
 		contentPane.add(labelAcessoExclusivo);
 		
 		JLabel txtAmbl3 = new JLabel("AMBL3");
@@ -65,25 +74,49 @@ public class JDiretor extends JFrame {
 		labelAcao.setBounds(53, 79, 161, 14);
 		contentPane.add(labelAcao);
 		
-		
-		//terminar
 		JComboBox<String> comboBox = new JComboBox<>();
-		List<Diretor> funcoesP = Arrays.asList(Diretor.values());
+		List<PresidenteEnum> funcoesP = Arrays.asList(PresidenteEnum.values());
 		comboBox.addItem("Selecione uma das opções:");
-		for(Diretor opcao : funcoesP) {
+		for(PresidenteEnum opcao : funcoesP) {
 			comboBox.addItem(opcao.getTipo());
 		}
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String tipo = comboBox.getSelectedItem().toString();
-				if(tipo.equalsIgnoreCase(Diretor.CADASTRAR_CONTA.getTipo())) {
-					//dispose();
+				if(tipo.equalsIgnoreCase(PresidenteEnum.CADASTRAR_CLIENTE.getTipo())) {
+					dispose();
 					JCadastro jCadastro = new JCadastro();
 					jCadastro.setLocationRelativeTo(jCadastro);
 					jCadastro.setVisible(true);
-				} else if(tipo.equalsIgnoreCase(Diretor.RELATORIO_COMPLETO.getTipo())) {
+				} else if(tipo.equalsIgnoreCase(PresidenteEnum.CADASTRAR_FUNCIONARIO.getTipo())) {
 					dispose();
-					//relatorio
+					JCadastroFuncionario jCadastroFuncionario = new JCadastroFuncionario();
+					jCadastroFuncionario.setLocationRelativeTo(jCadastroFuncionario);
+					jCadastroFuncionario.setVisible(true);
+					//implementar relatorio diretores
+				} else if(tipo.equalsIgnoreCase(PresidenteEnum.RELATORIO_DIRETORES.getTipo())) {
+					dispose();
+					Presidente presidente = new Presidente();
+					try {
+						presidente.relatorioDiretores();
+					} catch (IOException e1) {
+						
+						e1.printStackTrace();
+					}
+					
+				} else if(tipo.equalsIgnoreCase(PresidenteEnum.RELATORIO_VALORES.getTipo())) {
+					Presidente presidente = new Presidente();
+					try {
+						JOptionPane.showMessageDialog(null, "Capital Total R$"
+								+ df.format(presidente.relatorioCapital()) , "Relatório",
+										JOptionPane.DEFAULT_OPTION);
+					} catch (HeadlessException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
